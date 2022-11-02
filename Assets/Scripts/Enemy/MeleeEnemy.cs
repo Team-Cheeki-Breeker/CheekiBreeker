@@ -13,10 +13,12 @@ public class MeleeEnemy : MonoBehaviour
     private float cooldownTimer = Mathf.Infinity;
 
     private Animator animator;
+    private EnemyPatrolling enemyPatrolling;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        enemyPatrolling = GetComponentInParent<EnemyPatrolling>();
     }
     // Start is called before the first frame update
     void Start()
@@ -34,6 +36,9 @@ public class MeleeEnemy : MonoBehaviour
                 cooldownTimer = 0;
                 animator.SetTrigger("meleeAttack");
             }
+        }
+        if(enemyPatrolling != null) {
+            enemyPatrolling.enabled = !PlayerInSight();
         }
     }
     private bool PlayerInSight() {
