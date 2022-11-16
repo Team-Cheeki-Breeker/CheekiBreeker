@@ -13,12 +13,12 @@ public class MeleeEnemy : MonoBehaviour
     private float cooldownTimer = Mathf.Infinity;
 
     private Animator animator;
-    private EnemyPatrolling enemyPatrolling;
+    private EnemyMovement enemyPatrolling;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
-        enemyPatrolling = GetComponentInParent<EnemyPatrolling>();
+        enemyPatrolling = GetComponentInParent<EnemyMovement>();
     }
     // Start is called before the first frame update
     void Start()
