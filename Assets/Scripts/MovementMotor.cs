@@ -17,6 +17,7 @@ public class MovementMotor : MonoBehaviour
     public BoxCollider2D HeadDetectionBox;  //Hitbox of head
     public LayerMask layerMask;             //Layer of the ground or standable objects
     private Animator animator;              //Animator of object
+    GameObject weaponholder;
 
     /**
      * Start function of motor
@@ -25,6 +26,7 @@ public class MovementMotor : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = this.GetComponentInChildren<Animator>();
+        weaponholder = GameObject.Find("WeaponHolder");
     }
 
     /**
@@ -92,7 +94,7 @@ public class MovementMotor : MonoBehaviour
      */
     private IEnumerator CheckGrounded()
     {
-        
+
         bool lastGrounded = isGrounded;
         bool currentGrounded = Physics2D.OverlapBox(Feet.position, FeetDetectionBox.size, 0, layerMask);
         if (!currentGrounded && lastGrounded)
@@ -122,7 +124,7 @@ public class MovementMotor : MonoBehaviour
     {
         rb.velocity = direction.normalized * force;
     }
-    
+
     /**
      * Returns whether the player is grounded
      * @return bool player is grounded
@@ -138,5 +140,9 @@ public class MovementMotor : MonoBehaviour
     public void FlipCharacter()
     {
         transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+        foreach (Transform child in weaponholder.transform)
+        {
+            child.localScale = new(child.localScale.x * -1, child.localScale.y * -1, child.localScale.z);
+        }
     }
 }
