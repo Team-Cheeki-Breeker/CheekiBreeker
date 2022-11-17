@@ -132,4 +132,6 @@ MonoBehaviour:
   Offset: 0
   Bullet: {fileID: 6589929864558230694, guid: cdec9bf4dce38f140b62185dd8df31ac, type: 3}
   BarrelPos: {fileID: 576306971393210967}
-  startTimeBtwShots: 0.8
+  startMag: 5
+  startTimeBtwShots: 0.4
+  startReloadTime: 2

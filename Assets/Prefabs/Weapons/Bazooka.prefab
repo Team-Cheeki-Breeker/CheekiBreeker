@@ -101,7 +101,9 @@ MonoBehaviour:
   Offset: 0
   Bullet: {fileID: 4985481137299864095, guid: 3ed5ac1c3de7b9a458168dd0250ec521, type: 3}
   BarrelPos: {fileID: 592277772039993221}
-  startTimeBtwShots: 4
+  startMag: 2
+  startTimeBtwShots: 1
+  startReloadTime: 3
 --- !u!1 &592277772039993220
 GameObject:
   m_ObjectHideFlags: 0
