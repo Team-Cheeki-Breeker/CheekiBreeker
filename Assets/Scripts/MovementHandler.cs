@@ -9,6 +9,9 @@ public class MovementHandler : MonoBehaviour
     public float KnockbackTime;                 //How long the player is unable to move, when hit
     public float KnockbackForce;                //How strong the knockback is
     public Vector2 KnockbackDirection;          //Direction, where the player is thrown
+    private Animator animator;                  //Animator of object
+    public float AttackCooldown;
+    private float AttackCurrent = 0;
 
     /**
      * Start function of handler
@@ -17,6 +20,7 @@ public class MovementHandler : MonoBehaviour
     {
         movementMotor = GetComponent<MovementMotor>();
         CanMove = true;
+        animator = this.GetComponentInChildren<Animator>(); ;
     }
 
     /**
@@ -37,6 +41,7 @@ public class MovementHandler : MonoBehaviour
      */
     void Update()
     {
+        
         if (CanMove)
         {
             if (Input.GetButtonDown("Jump"))
@@ -51,6 +56,19 @@ public class MovementHandler : MonoBehaviour
             {
                 movementMotor.StopJump();
             }
+            if (Input.GetButton("Fire2"))
+            {
+                Slash();
+            }
+        }
+        if (AttackCooldown <= AttackCurrent)
+        {
+            inAttack = false;
+            AttackCurrent = 0;
+        }
+        if (inAttack)
+        {
+            AttackCurrent += 0.1f;
         }
     }
 
@@ -90,5 +108,14 @@ public class MovementHandler : MonoBehaviour
         movementMotor.ThrowPlayer(direction, KnockbackForce);
         yield return new WaitForSeconds(KnockbackTime);
         ToggleMove(true);
+    }
+    private bool inAttack = false;
+    private void Slash()
+    {
+        if (!inAttack)
+        {
+            animator.SetTrigger("Slash");
+            inAttack = true;
+        }
     }
 }
