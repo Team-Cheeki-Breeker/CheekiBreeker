@@ -134,4 +134,4 @@ MonoBehaviour:
   BarrelPos: {fileID: 576306971393210967}
   startMag: 5
   startTimeBtwShots: 0.4
-  startReloadTime: 2
+  startReloadTime: 1.8

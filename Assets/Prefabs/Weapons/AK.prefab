@@ -102,8 +102,8 @@ MonoBehaviour:
   Bullet: {fileID: 3383396530564206888, guid: 1ab76a87fc356bf43a8fe35dce204f7d, type: 3}
   BarrelPos: {fileID: 1526798490122475297}
   startMag: 60
-  startTimeBtwShots: 0.05
-  startReloadTime: 2
+  startTimeBtwShots: 0.08
+  startReloadTime: 1.8
 --- !u!1 &1526798490122475294
 GameObject:
   m_ObjectHideFlags: 0
