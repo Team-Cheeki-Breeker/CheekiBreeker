@@ -98,3 +98,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 12
+  distance: 0.1
+  solidMask:
+    serializedVersion: 2
+    m_Bits: 192
+  damage: 5
+  collisionEffect: {fileID: 0}

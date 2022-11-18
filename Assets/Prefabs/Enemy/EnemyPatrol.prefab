@@ -264,7 +264,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftEdge: {fileID: 4196806962473992466}
   rightEdge: {fileID: 7670100333455083856}
-  enemy: {fileID: 3381877295101165517}
+  enemy: {fileID: 6926964919319526885, guid: 634ae72d8681a7c4ea27bc7253cd0e9f, type: 3}
   speed: 2.3
   idleDuration: 0
   animator: {fileID: 3381877295101165519}
+  boxCollider: {fileID: 0}
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  range: 0
+  colliderDistance: 0
