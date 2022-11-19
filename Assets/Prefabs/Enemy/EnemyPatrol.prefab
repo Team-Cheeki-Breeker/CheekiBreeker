@@ -268,7 +268,7 @@ MonoBehaviour:
   speed: 2.3
   idleDuration: 0
   animator: {fileID: 3381877295101165519}
-  boxCollider: {fileID: 0}
+  boxCollider: {fileID: 6926964919319526886, guid: 634ae72d8681a7c4ea27bc7253cd0e9f, type: 3}
   playerLayer:
     serializedVersion: 2
     m_Bits: 0

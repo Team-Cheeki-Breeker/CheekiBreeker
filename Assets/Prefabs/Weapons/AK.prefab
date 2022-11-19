@@ -103,7 +103,7 @@ MonoBehaviour:
   BarrelPos: {fileID: 1526798490122475297}
   startMag: 60
   startTimeBtwShots: 0.08
-  startReloadTime: 1.8
+  startReloadTime: 1.4
 --- !u!1 &1526798490122475294
 GameObject:
   m_ObjectHideFlags: 0

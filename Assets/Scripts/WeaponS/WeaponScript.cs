@@ -17,6 +17,14 @@ public class WeaponScript : MonoBehaviour
     public int startMag;
     public float startTimeBtwShots;
     public float startReloadTime;
+
+    public int CurrentMagazine { get => magazineCurr;  }
+
+    public bool isRealoading()
+    {
+        return reloadCD > 0;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
