@@ -12,6 +12,7 @@ public class PlayerHandler : MonoBehaviour
 
     public GameObject WeaponsHandler;
     public Image HpBar;
+    public Image RELOADING_WARN;
     public TextMeshProUGUI HpText;
     public TextMeshProUGUI AmmoText;
 
@@ -39,7 +40,15 @@ public class PlayerHandler : MonoBehaviour
             }
         }
 
-        AmmoText.text = (firstActiveWeapon.GetComponent<WeaponScript>().isRealoading() ? "Pizdéc" : firstActiveWeapon.GetComponent<WeaponScript>().CurrentMagazine + 1)  
+        if (firstActiveWeapon.GetComponent<WeaponScript>().isRealoading())
+        {
+            RELOADING_WARN.enabled = true;
+        } else
+        {
+            RELOADING_WARN.enabled = false;
+        }
+
+        AmmoText.text = (firstActiveWeapon.GetComponent<WeaponScript>().isRealoading() ? 0 : firstActiveWeapon.GetComponent<WeaponScript>().CurrentMagazine + 1)  
                          + " / " + firstActiveWeapon.GetComponent<WeaponScript>().startMag;
         HpText.text = health + " / " + maxHealth;
 
