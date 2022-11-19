@@ -38,7 +38,7 @@ public class dynamo : MonoBehaviour
         {
             if (Usable)
             {
-                Explode();
+                Explode(collision);
             }
         }
 
@@ -46,20 +46,21 @@ public class dynamo : MonoBehaviour
         {
             if (Usable)
             {
-                Explode();
+                Explode(collision);
             }
         }
     }
 
-    private void Explode()
+    private void Explode(Collider2D collision)
     {
         animator.SetBool("Explode", true);
-        DamagePlayer();
+        DamagePlayer(collision);
     }
 
-    private void DamagePlayer()
+    private void DamagePlayer(Collider2D collision)
     {
         Debug.Log("Damage");
+        collision.GetComponent<PlayerHandler>().TakeDamage(damage);
     }
 
     public void AlertObservers(string message)

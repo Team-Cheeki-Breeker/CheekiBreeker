@@ -10,6 +10,7 @@ public class radation : MonoBehaviour
     [SerializeField] private float attackCooldown;
     private bool PlayerInTrigger = false;
     private float cooldownTimer = Mathf.Infinity;
+    private Collider2D collision = null;
 
     private void Update()
     {
@@ -19,7 +20,7 @@ public class radation : MonoBehaviour
             if (cooldownTimer >= attackCooldown)
             {
                 cooldownTimer = 0;
-                DamagePlayer();
+                DamagePlayer(collision);
             }
         }
     }
@@ -29,6 +30,7 @@ public class radation : MonoBehaviour
         if (collision.tag == "Player")
         {
             PlayerInTrigger = true;
+            this.collision = collision;
         }
     }
 
@@ -37,11 +39,13 @@ public class radation : MonoBehaviour
         if (collision.tag == "Player")
         {
             PlayerInTrigger = false;
+            collision = null;
         }
     }
 
-    private void DamagePlayer()
+    private void DamagePlayer(Collider2D collision)
     {
         Debug.Log("Damage");
+        collision.GetComponent<PlayerHandler>().TakeDamage(damage);
     }
 }

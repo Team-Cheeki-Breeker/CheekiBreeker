@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4194542063908917736}
   - component: {fileID: 8649590921423130938}
   - component: {fileID: 4187443983816683636}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: buzzing1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e1edc570e7dfd9d4eb716dcb8af0fd26, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1560b568ae6484e499539f332c717bc2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -157,7 +157,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 20, y: 20}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1.28, y: 1.28}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
