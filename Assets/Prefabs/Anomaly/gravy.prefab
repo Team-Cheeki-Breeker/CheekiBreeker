@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: -850715527082500942}
   - component: {fileID: 2724939728315364097}
   - component: {fileID: 6382510425359224225}
-  m_Layer: 8
+  - component: {fileID: 1655007103994868874}
+  m_Layer: 9
   m_Name: gravy
-  m_TagString: Untagged
+  m_TagString: Anomaly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -116,6 +117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   center: {fileID: 6382510425359224225}
+  outside: {fileID: -850715527082500942}
 --- !u!58 &6382510425359224225
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -132,3 +134,24 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.1
+--- !u!50 &1655007103994868874
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3773215086351229118}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

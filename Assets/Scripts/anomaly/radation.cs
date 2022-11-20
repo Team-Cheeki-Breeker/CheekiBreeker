@@ -8,44 +8,53 @@ public class radation : MonoBehaviour
 {
     [SerializeField] private int damage;
     [SerializeField] private float attackCooldown;
-    private bool PlayerInTrigger = false;
     private float cooldownTimer = Mathf.Infinity;
-    private Collider2D collision = null;
+    private bool CanDamage = false;
+    private List<Collider2D> colliders = new List<Collider2D>();
 
     private void Update()
     {
         cooldownTimer += Time.deltaTime;
-        if (PlayerInTrigger)
+        if (CanDamage)
         {
             if (cooldownTimer >= attackCooldown)
             {
                 cooldownTimer = 0;
-                DamagePlayer(collision);
+                Damage(colliders);
             }
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player")
+        if (collision.tag == "Player" || collision.tag == "Enemy")
         {
-            PlayerInTrigger = true;
-            this.collision = collision;
+            CanDamage = true;
+            this.colliders.Add(collision);
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == "Player")
+        if (collision.tag == "Player" || collision.tag == "Enemy")
         {
-            PlayerInTrigger = false;
-            collision = null;
+            CanDamage = false;
+            this.colliders.Remove(collision);
         }
     }
 
-    private void DamagePlayer(Collider2D collision)
+    private void Damage(List<Collider2D> colliders)
     {
-        Debug.Log("Damage");
-        collision.GetComponent<PlayerHandler>().TakeDamage(damage);
+        foreach(Collider2D collision in colliders)
+        {
+            if(collision.tag == "Player")
+            {
+                collision.GetComponent<PlayerHandler>().TakeDamage(damage);
+            }
+            else if(collision.tag == "Enemy")
+            {
+                collision.GetComponent<HealthController>().takeDamage(damage);
+            }
+        }
     }
 }
