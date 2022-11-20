@@ -9,9 +9,10 @@ public class dynamo : MonoBehaviour
     [SerializeField] private CircleCollider2D center;
     [SerializeField] private BoxCollider2D outside;
     private Animator animator;
+    private List<Collider2D> colliders = new List<Collider2D>();
 
     private float cooldownTimer = Mathf.Infinity;
-    private bool Usable = true;
+    private bool CanDamage = false;
 
     private void Awake()
     {
@@ -22,45 +23,63 @@ public class dynamo : MonoBehaviour
     void Update()
     {
         cooldownTimer += Time.deltaTime;
-        if (!Usable)
+        if (CanDamage)
         {
             if (cooldownTimer >= attackCooldown)
             {
                 cooldownTimer = 0;
-                Usable = true;
+                Explode(colliders);
+                if (colliders.Count <= 0)
+                    CanDamage = false;
             }
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (center.IsTouching(collision) && collision.tag == "Bulllet")
+        if (center.IsTouching(collision) && collision.tag == "Bullet")
         {
-            if (Usable)
-            {
-                Explode(collision);
-            }
+            CanDamage = true;
         }
 
-        if (outside.IsTouching(collision) && collision.tag == "Player")
+        if (outside.IsTouching(collision) && (collision.tag == "Player" || collision.tag == "Enemy"))
         {
-            if (Usable)
+            if (!colliders.Contains(collision))
             {
-                Explode(collision);
+                colliders.Add(collision);
             }
+            CanDamage = true;
         }
     }
 
-    private void Explode(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "Player" || collision.tag == "Enemy")
+        {
+            this.colliders.Remove(collision);
+            CanDamage = false;
+        }
+    }
+
+    private void Explode(List<Collider2D> colliders)
     {
         animator.SetBool("Explode", true);
-        DamagePlayer(collision);
+        Damage(colliders);
     }
 
-    private void DamagePlayer(Collider2D collision)
+    private void Damage(List<Collider2D> colliders)
     {
-        Debug.Log("Damage");
-        collision.GetComponent<PlayerHandler>().TakeDamage(damage);
+        foreach (Collider2D collision in colliders)
+        {
+            if (collision.tag == "Player")
+            {
+                collision.GetComponent<PlayerHandler>().TakeDamage(damage);
+            }
+            else if (collision.tag == "Enemy")
+            {
+                collision.GetComponent<HealthController>().takeDamage(damage);
+            }
+        }
     }
 
     public void AlertObservers(string message)
