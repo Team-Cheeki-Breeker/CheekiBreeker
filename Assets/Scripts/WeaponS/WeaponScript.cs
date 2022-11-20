@@ -6,7 +6,7 @@ public class WeaponScript : MonoBehaviour
 {
 
     public float Offset;//{ get; set; }
-
+    public AudioClip clip;
     public GameObject Bullet; //{ get; set; }
     public Transform BarrelPos; //{ get; set; }
 
@@ -51,6 +51,7 @@ public class WeaponScript : MonoBehaviour
                     magazineCurr = startMag;
                 }
                 Instantiate(Bullet, BarrelPos.position, transform.rotation);
+                GetComponent<AudioSource>().PlayOneShot(clip);
                 magazineCurr -= 1;
                 timeBtwShots = startTimeBtwShots;
             }
@@ -62,4 +63,6 @@ public class WeaponScript : MonoBehaviour
         }
         
     }
+
+
 }
