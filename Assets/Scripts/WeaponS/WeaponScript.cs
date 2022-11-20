@@ -6,7 +6,9 @@ public class WeaponScript : MonoBehaviour
 {
 
     public float Offset;//{ get; set; }
-    public AudioClip clip;
+    public AudioClip fireCLip;
+    public AudioClip reloadClip;
+
     public GameObject Bullet; //{ get; set; }
     public Transform BarrelPos; //{ get; set; }
 
@@ -30,6 +32,7 @@ public class WeaponScript : MonoBehaviour
     {
         magazineCurr = startMag;
         reloadCD = 0;
+
     }
 
     // Update is called once per frame
@@ -49,9 +52,10 @@ public class WeaponScript : MonoBehaviour
                 {
                     reloadCD = startReloadTime;
                     magazineCurr = startMag;
+                    StartCoroutine(PlayReload(reloadCD * 1.0f - 0.4f));
                 }
                 Instantiate(Bullet, BarrelPos.position, transform.rotation);
-                GetComponent<AudioSource>().PlayOneShot(clip);
+                GetComponent<AudioSource>().PlayOneShot(fireCLip);
                 magazineCurr -= 1;
                 timeBtwShots = startTimeBtwShots;
             }
@@ -62,7 +66,11 @@ public class WeaponScript : MonoBehaviour
             reloadCD -= Time.deltaTime;
         }
         
+    } 
+
+    public IEnumerator PlayReload(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        GetComponent<AudioSource>().PlayOneShot(reloadClip);
     }
-
-
 }

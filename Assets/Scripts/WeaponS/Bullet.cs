@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    public float lifeTime;
 
     public float speed;
     public float distance;
@@ -14,6 +15,7 @@ public class Bullet : MonoBehaviour
     void Start()
     {
         transform.Rotate(0f, 0f, -90f);
+        Invoke("DestroyProjectile", lifeTime);
     }
 
     // Update is called once per frame

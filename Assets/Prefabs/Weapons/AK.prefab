@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1526798489793215480}
   - component: {fileID: 1526798489793215481}
   - component: {fileID: 1526798489793215478}
-  - component: {fileID: 295534186336465002}
+  - component: {fileID: 4268711797499693585}
   m_Layer: 0
   m_Name: AK
   m_TagString: Untagged
@@ -106,7 +106,7 @@ MonoBehaviour:
   startMag: 60
   startTimeBtwShots: 0.08
   startReloadTime: 1.4
---- !u!82 &295534186336465002
+--- !u!82 &4268711797499693585
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -119,7 +119,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 1b145bcffd767854fb0c71c37678ebaa, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
-  m_Pitch: -2.98
+  m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
