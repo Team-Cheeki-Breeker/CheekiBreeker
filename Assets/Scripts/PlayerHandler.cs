@@ -29,7 +29,6 @@ public class PlayerHandler : MonoBehaviour
         movementHandler = GetComponent<MovementHandler>();
         audioSource.loop = false;
         health = maxHealth;
-
     }
 
     public void Update()
@@ -43,6 +42,9 @@ public class PlayerHandler : MonoBehaviour
                 firstActiveWeapon = WeaponsHandler.transform.GetChild(i);
             }
         }
+
+        firstActiveWeapon.GetComponent<WeaponScript>().onShooting -= yellShooting;
+
         firstActiveWeapon.GetComponent<WeaponScript>().onShooting += yellShooting;
 
         if (firstActiveWeapon.GetComponent<WeaponScript>().isRealoading())
@@ -87,7 +89,7 @@ public class PlayerHandler : MonoBehaviour
 
     public void yellShooting()
     {
-        if (!audioSource.isPlaying)
+        if (!audioSource.isPlaying && Random.Range(0,7) >=6 )
         {
             audioSource.PlayOneShot(shootingYells[Random.Range(0, damageYells.Length)]);
         }
