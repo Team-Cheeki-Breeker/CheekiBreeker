@@ -9,6 +9,9 @@ public class PlayerHandler : MonoBehaviour
     public float health;            //current health of the player
     public float maxHealth;         //maximum health of the player
     private MovementHandler movementHandler;
+    public AudioClip[] damageYells;
+    public AudioClip[] shootingYells;
+    public AudioSource audioSource;
 
     public GameObject WeaponsHandler;
     public Image HpBar;
@@ -24,13 +27,14 @@ public class PlayerHandler : MonoBehaviour
     void Start()
     {
         movementHandler = GetComponent<MovementHandler>();
-
+        audioSource.loop = false;
         health = maxHealth;
+
     }
 
     public void Update()
     {
-        Transform firstActiveWeapon = WeaponsHandler.transform.GetChild(1); ;
+        Transform firstActiveWeapon = WeaponsHandler.transform.GetChild(1); 
 
         for (int i = 0; i < WeaponsHandler.transform.childCount; i++)
         {
@@ -39,6 +43,7 @@ public class PlayerHandler : MonoBehaviour
                 firstActiveWeapon = WeaponsHandler.transform.GetChild(i);
             }
         }
+        firstActiveWeapon.GetComponent<WeaponScript>().onShooting += yellShooting;
 
         if (firstActiveWeapon.GetComponent<WeaponScript>().isRealoading())
         {
@@ -51,7 +56,6 @@ public class PlayerHandler : MonoBehaviour
         AmmoText.text = (firstActiveWeapon.GetComponent<WeaponScript>().isRealoading() ? 0 : firstActiveWeapon.GetComponent<WeaponScript>().CurrentMagazine + 1)  
                          + " / " + firstActiveWeapon.GetComponent<WeaponScript>().startMag;
         HpText.text = health + " / " + maxHealth;
-
     }
 
     /**
@@ -60,8 +64,14 @@ public class PlayerHandler : MonoBehaviour
      */
     public void TakeDamage(float damage, Transform collider = null)
     {
+
         health -= damage;
         HpBar.fillAmount = health / maxHealth;
+        if (!audioSource.isPlaying)
+        {
+            audioSource.PlayOneShot(damageYells[Random.Range(0, damageYells.Length)]);
+        }
+            
 
         if (collider != null)
         {
@@ -73,6 +83,14 @@ public class PlayerHandler : MonoBehaviour
             //TODO: Death
         }
         
+    }
+
+    public void yellShooting()
+    {
+        if (!audioSource.isPlaying)
+        {
+            audioSource.PlayOneShot(shootingYells[Random.Range(0, damageYells.Length)]);
+        }
     }
 
 

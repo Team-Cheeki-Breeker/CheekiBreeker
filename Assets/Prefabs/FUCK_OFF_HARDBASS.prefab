@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3584492737150584451}
+  - component: {fileID: 5710809614727546879}
   - component: {fileID: 3584492737150584450}
   m_Layer: 0
   m_Name: FUCK_OFF_HARDBASS
@@ -32,6 +33,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5710809614727546879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3584492737150584449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 425f24d2a3c910143b3eba4578214a7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: ca0d1b216aa993643ad9e54d6a4cf1f1, type: 3}
+  - {fileID: 8300000, guid: e7c3601a98476774e83fec709ee40759, type: 3}
+  - {fileID: 8300000, guid: 552fd263edaf76246a03a9589f88caa2, type: 3}
+  - {fileID: 8300000, guid: de9b186aea46b1d4e8420abb3a7ca993, type: 3}
+  - {fileID: 8300000, guid: 88ebaf964c6823c4b8e2bd00eaf03144, type: 3}
+  - {fileID: 8300000, guid: 52bc12f359648ff43a07a91a77ecac8b, type: 3}
+  - {fileID: 8300000, guid: b1a0e43b3c72e3745bee80e316a83542, type: 3}
+  - {fileID: 8300000, guid: d60827743d36a1749bc432dd0adbb701, type: 3}
+  - {fileID: 8300000, guid: d7c492da6f3ae844e8a3847df26aa637, type: 3}
+  - {fileID: 8300000, guid: 486f5ecb86ddc8f4398be5c97f539587, type: 3}
+  - {fileID: 8300000, guid: 32ca07385d1fa7a42be83942413f6966, type: 3}
+  - {fileID: 8300000, guid: 37362010661f54943bc5af0b804f31be, type: 3}
+  source: {fileID: 3584492737150584450}
 --- !u!82 &3584492737150584450
 AudioSource:
   m_ObjectHideFlags: 0
@@ -43,7 +70,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: ca0d1b216aa993643ad9e54d6a4cf1f1, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

@@ -479,7 +479,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4194542063908917736, guid: 9c302456a093dc14182939cadf4b67ef, type: 3}
       propertyPath: damage
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4194542063908917736, guid: 9c302456a093dc14182939cadf4b67ef, type: 3}
       propertyPath: attackCooldown

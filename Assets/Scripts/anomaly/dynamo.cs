@@ -8,6 +8,7 @@ public class dynamo : MonoBehaviour
     [SerializeField] private float attackCooldown;
     [SerializeField] private CircleCollider2D center;
     [SerializeField] private BoxCollider2D outside;
+    public AudioClip fireCLip;
     private Animator animator;
     private List<Collider2D> colliders = new List<Collider2D>();
 
@@ -63,6 +64,7 @@ public class dynamo : MonoBehaviour
 
     private void Explode(List<Collider2D> colliders)
     {
+        GetComponent<AudioSource>().PlayOneShot(fireCLip);
         animator.SetBool("Explode", true);
         Damage(colliders);
     }

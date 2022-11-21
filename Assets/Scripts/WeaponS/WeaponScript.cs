@@ -19,6 +19,9 @@ public class WeaponScript : MonoBehaviour
     public int startMag;
     public float startTimeBtwShots;
     public float startReloadTime;
+    public delegate void OnShooting();
+    public event OnShooting onShooting;
+    
 
     public int CurrentMagazine { get => magazineCurr;  }
 
@@ -54,7 +57,7 @@ public class WeaponScript : MonoBehaviour
                     magazineCurr = startMag;
                     StartCoroutine(PlayReload(reloadCD * 1.0f - 0.4f));
                 }
-                Instantiate(Bullet, BarrelPos.position, transform.rotation);
+                FireAway();  
                 GetComponent<AudioSource>().PlayOneShot(fireCLip);
                 magazineCurr -= 1;
                 timeBtwShots = startTimeBtwShots;
@@ -72,5 +75,11 @@ public class WeaponScript : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         GetComponent<AudioSource>().PlayOneShot(reloadClip);
+    }
+
+    public void FireAway()
+    {
+        Instantiate(Bullet, BarrelPos.position, transform.rotation);
+        onShooting?.Invoke();    
     }
 }

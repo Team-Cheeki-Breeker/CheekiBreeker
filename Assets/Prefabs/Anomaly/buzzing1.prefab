@@ -125,6 +125,7 @@ MonoBehaviour:
   attackCooldown: 5
   center: {fileID: 8649590921423130938}
   outside: {fileID: 4187443983816683636}
+  fireCLip: {fileID: 8300000, guid: 2fa964238db27774581ade3cb263a883, type: 3}
 --- !u!58 &8649590921423130938
 CircleCollider2D:
   m_ObjectHideFlags: 0
