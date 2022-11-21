@@ -116,6 +116,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 576306972534027022, guid: d76b78ae1fd62ac49885ed53b0802a98, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d76b78ae1fd62ac49885ed53b0802a98, type: 3}
 --- !u!4 &8250272000894260469 stripped
@@ -185,6 +189,10 @@ PrefabInstance:
     - target: {fileID: 592277770866581606, guid: 2d30a502c02d93648b77f86f03d8dd4d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 592277770866581609, guid: 2d30a502c02d93648b77f86f03d8dd4d, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 592277770866581611, guid: 2d30a502c02d93648b77f86f03d8dd4d, type: 3}
       propertyPath: m_Name
@@ -272,6 +280,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'Shotgun '
       objectReference: {fileID: 0}
+    - target: {fileID: 6007428626439173001, guid: e15fae581bb197648bfa98db4fa79c4c, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e15fae581bb197648bfa98db4fa79c4c, type: 3}
 --- !u!4 &7240131847690916305 stripped
@@ -345,6 +357,10 @@ PrefabInstance:
     - target: {fileID: 1526798489793215480, guid: 0a9569a78be69044dba9b944691b3df1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1526798489793215481, guid: 0a9569a78be69044dba9b944691b3df1, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a9569a78be69044dba9b944691b3df1, type: 3}
