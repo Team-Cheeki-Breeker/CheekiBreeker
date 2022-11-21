@@ -69,7 +69,7 @@ public class PlayerHandler : MonoBehaviour
 
         health -= damage;
         HpBar.fillAmount = health / maxHealth;
-        if (!audioSource.isPlaying)
+        if (!audioSource.isPlaying && damage >= 10)
         {
             audioSource.PlayOneShot(damageYells[Random.Range(0, damageYells.Length)]);
         }

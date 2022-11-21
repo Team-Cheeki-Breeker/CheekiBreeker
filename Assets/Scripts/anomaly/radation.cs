@@ -11,6 +11,8 @@ public class radation : MonoBehaviour
     private float cooldownTimer = Mathf.Infinity;
     private bool CanDamage = false;
     private List<Collider2D> colliders = new List<Collider2D>();
+    public AudioClip fireCLip;
+
 
     private void Update()
     {
@@ -20,6 +22,7 @@ public class radation : MonoBehaviour
             if (cooldownTimer >= attackCooldown)
             {
                 cooldownTimer = 0;
+                if(!GetComponent<AudioSource>().isPlaying) GetComponent<AudioSource>().PlayOneShot(fireCLip);
                 Damage(colliders);
             }
         }
