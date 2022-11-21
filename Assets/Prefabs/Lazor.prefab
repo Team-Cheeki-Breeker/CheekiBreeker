@@ -47,8 +47,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc640c1bf8dd7aa458fcd0c3f2be4411, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  distance: 500
+  solidMask:
+    serializedVersion: 2
+    m_Bits: 0
   lifeTime: 2
   speed: 500
+  damage: 80
+  collisionEffect: {fileID: 0}
 --- !u!212 &7283382776213768195
 SpriteRenderer:
   m_ObjectHideFlags: 0
