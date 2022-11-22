@@ -6,38 +6,60 @@ public class gravy : MonoBehaviour
 {
     [SerializeField] private Collider2D center;
     [SerializeField] private Collider2D outside;
-    private bool InOutside = false;
-
+    [SerializeField] private int PullForce;
+    [SerializeField] private int ThrowForce;
+    [SerializeField] private int CenterTime;
+    [SerializeField] private int BarrierResetTime;
+    [SerializeField] private int Damage;
+    private bool WaitingForThrow = false;
+    private bool InCenter = false;
     private void Update()
     {
-        if (InOutside)
-        {
-            Debug.Log("Behúzás");
-        }
+       
         
     }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.tag != "Player") return;
+        MovementHandler movementHandler = collision.gameObject.GetComponent<MovementHandler>();
+        movementHandler.ToggleMove(false);
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.tag != "Player") return;
+        MovementMotor playerMotor = collision.gameObject.GetComponent<MovementMotor>();
         if (center.IsTouching(collision))
         {
             Debug.Log("Kilövés");
-            InOutside = false;
-            //Debugra
-            outside.enabled = false;
+            if (!InCenter)
+            {
+                StartCoroutine(Launch(collision));
+            }
         }
 
-        if (outside.IsTouching(collision))
+        if (outside.IsTouching(collision)&& !WaitingForThrow)
         {
-            InOutside = true;
+            Debug.Log("Behúzás");
+
+            playerMotor.ThrowPlayer(transform.position - collision.transform.position, PullForce);
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private IEnumerator Launch(Collider2D collision)
     {
-        //Debugra
-        outside.enabled = true;
-
-        InOutside = false;
+        InCenter = true;
+        yield return new WaitForSeconds(CenterTime/100.0f);
+        WaitingForThrow = true;
+        collision.gameObject.GetComponent<MovementMotor>().ThrowPlayer(collision.transform.up, ThrowForce);
+        collision.gameObject.GetComponent<PlayerHandler>().TakeDamage(Damage);
+        collision.gameObject.GetComponent<MovementHandler>().ToggleMove(true);
+        yield return new WaitForSeconds(BarrierResetTime/100.0f);
+        InCenter = false;
+        WaitingForThrow = false;
     }
+
+    
+
+
 }
