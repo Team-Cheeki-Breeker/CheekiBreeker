@@ -69,6 +69,7 @@ GameObject:
   - component: {fileID: 1368973539009884389}
   - component: {fileID: 1368973539009884391}
   - component: {fileID: 1368973539009884388}
+  - component: {fileID: 6169337501578060446}
   - component: {fileID: 1368973539009884395}
   - component: {fileID: 1368973539009884394}
   - component: {fileID: 1368973539009884393}
@@ -128,7 +129,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1368973539009884384}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e5cba86593a33c54dbd53e0e509301d9, type: 3}
   m_Name: 
@@ -143,6 +144,31 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 64
+--- !u!114 &6169337501578060446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1368973539009884384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b09e88d159555694cb5234e42b765411, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MovementSpeed: 250
+  JumpLength: 0.5
+  JumpForce: 10
+  Feet: {fileID: 1368973539117111124}
+  Head: {fileID: 1368973538278695575}
+  FeetDetectionBox: {fileID: 1368973539117111131}
+  HeadDetectionBox: {fileID: 1368973538278695574}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  oneWayLayer:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!61 &1368973539009884395
 BoxCollider2D:
   m_ObjectHideFlags: 0

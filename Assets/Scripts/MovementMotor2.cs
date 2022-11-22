@@ -16,7 +16,6 @@ public class MovementMotor2 : MonoBehaviour
     public BoxCollider2D FeetDetectionBox;  //Hitbox of feet
     public BoxCollider2D HeadDetectionBox;  //Hitbox of head
     public LayerMask layerMask;             //Layer of the ground or standable objects
-    public LayerMask oneWayLayer;             //Layer of the ground or standable objects
     private Animator animator;              //Animator of object
     GameObject weaponholder;
 
@@ -98,10 +97,6 @@ public class MovementMotor2 : MonoBehaviour
 
         bool lastGrounded = isGrounded;
         bool currentGrounded = Physics2D.OverlapBox(Feet.position, FeetDetectionBox.size, 0, layerMask);
-        if (!currentGrounded)
-        {
-            currentGrounded = Physics2D.OverlapBox(Feet.position, FeetDetectionBox.size, 0, oneWayLayer);
-        }
         if (!currentGrounded && lastGrounded)
         {
             yield return new WaitForSeconds(0.02f);
