@@ -104,8 +104,8 @@ MonoBehaviour:
   reloadClip: {fileID: 8300000, guid: 406c929b7299afb469c82778f8d15d5b, type: 3}
   Bullet: {fileID: 3383396530564206888, guid: 1ab76a87fc356bf43a8fe35dce204f7d, type: 3}
   BarrelPos: {fileID: 1526798490122475297}
-  startMag: 40
-  startTimeBtwShots: 0.15
+  startMag: 60
+  startTimeBtwShots: 0.1
   startReloadTime: 0.8
 --- !u!82 &4268711797499693585
 AudioSource:
