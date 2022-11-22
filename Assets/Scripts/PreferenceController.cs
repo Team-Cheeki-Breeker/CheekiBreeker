@@ -24,7 +24,7 @@ public class PreferenceController : MonoBehaviour
     void LoadValues()
     {
         float volumeValue = PlayerPrefs.GetFloat("VolumeValue");
-        float diffValue = difficultySlider.value;
+        float diffValue = PlayerPrefs.GetFloat("DifficultyValue");
         volumeSlider.value = volumeValue;
         difficultySlider.value = diffValue;
         AudioListener.volume = volumeValue;

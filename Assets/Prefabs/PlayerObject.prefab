@@ -209,6 +209,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 25b1fb39f8513404083ba25162162477, type: 3}
   - {fileID: 8300000, guid: 71bb885e6f398dc4680d6eeb88bbf968, type: 3}
   - {fileID: 8300000, guid: 06e4b13b1289be343a75d7efc67fc263, type: 3}
+  - {fileID: 8300000, guid: 49ee9f5e4c931704a95a10f51e774cc3, type: 3}
+  - {fileID: 8300000, guid: 49ee9f5e4c931704a95a10f51e774cc3, type: 3}
+  - {fileID: 8300000, guid: 2be7eddde7dc2cd448978f235bf13a8b, type: 3}
   audioSource: {fileID: 7051658998406367295}
   WeaponsHandler: {fileID: 4231282756467460798}
   HpBar: {fileID: 8984677878814668360}

@@ -122,8 +122,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43d246e7cf8f56240b16f91ce947fb0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 30
-  attackCooldown: 4
+  damage: 20
+  attackCooldown: 3
   center: {fileID: 8649590921423130938}
   outside: {fileID: 4187443983816683636}
   fireCLip: {fileID: 8300000, guid: 2fa964238db27774581ade3cb263a883, type: 3}
@@ -167,7 +167,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 20, y: 20}
+  m_Size: {x: 10, y: 10}
   m_EdgeRadius: 0
 --- !u!50 &-5480619151588412441
 Rigidbody2D:

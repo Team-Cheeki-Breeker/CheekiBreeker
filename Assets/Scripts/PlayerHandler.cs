@@ -33,7 +33,7 @@ public class PlayerHandler : MonoBehaviour
         movementHandler = GetComponent<MovementHandler>();
         audioSource.loop = false;
         float diffMod = PlayerPrefs.GetFloat("DifficultyValue");
-        ModifiedMaxHP = maxHealth - (int)Math.Round(diffMod * diffMod * 200);
+        ModifiedMaxHP = maxHealth - (int)Math.Round(diffMod * diffMod * 50);
         health = ModifiedMaxHP;
     }
 
@@ -97,7 +97,7 @@ public class PlayerHandler : MonoBehaviour
     {
         if (!audioSource.isPlaying && Random.Range(0,7) >=6 )
         {
-            audioSource.PlayOneShot(shootingYells[Random.Range(0, damageYells.Length)]);
+            audioSource.PlayOneShot(shootingYells[Random.Range(0, shootingYells.Length)]);
         }
     }
 
