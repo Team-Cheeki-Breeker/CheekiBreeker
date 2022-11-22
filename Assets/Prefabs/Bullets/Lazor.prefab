@@ -51,9 +51,9 @@ MonoBehaviour:
   solidMask:
     serializedVersion: 2
     m_Bits: 0
-  lifeTime: 2
-  speed: 500
-  damage: 80
+  lifeTime: 2.2
+  speed: 250
+  damage: 40
   collisionEffect: {fileID: 0}
 --- !u!212 &7283382776213768195
 SpriteRenderer:

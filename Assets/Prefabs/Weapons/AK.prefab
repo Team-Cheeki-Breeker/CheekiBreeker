@@ -100,7 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Offset: 0
-  clip: {fileID: 8300000, guid: 1b145bcffd767854fb0c71c37678ebaa, type: 3}
+  fireCLip: {fileID: 8300000, guid: 1b145bcffd767854fb0c71c37678ebaa, type: 3}
+  reloadClip: {fileID: 8300000, guid: 406c929b7299afb469c82778f8d15d5b, type: 3}
   Bullet: {fileID: 3383396530564206888, guid: 1ab76a87fc356bf43a8fe35dce204f7d, type: 3}
   BarrelPos: {fileID: 1526798490122475297}
   startMag: 60
@@ -115,10 +116,10 @@ AudioSource:
   m_GameObject: {fileID: 1526798489793215479}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 6517217595733143443, guid: 39b5b65d3ba4c5841a44e39996beab9d, type: 2}
   m_audioClip: {fileID: 8300000, guid: 1b145bcffd767854fb0c71c37678ebaa, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.357
   m_Pitch: 1
   Loop: 0
   Mute: 0

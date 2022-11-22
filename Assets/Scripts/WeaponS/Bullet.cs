@@ -10,7 +10,6 @@ public class Bullet : MonoBehaviour
     public float distance;
     public LayerMask solidMask;
     public int damage;
-    public GameObject collisionEffect;
     // Start is called before the first frame update
     void Start()
     {

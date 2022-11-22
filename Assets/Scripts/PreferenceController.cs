@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class VolumeSaveController : MonoBehaviour
+public class PreferenceController : MonoBehaviour
 {
     [SerializeField] private Slider volumeSlider = null;
   
