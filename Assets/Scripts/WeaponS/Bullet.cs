@@ -10,6 +10,7 @@ public class Bullet : MonoBehaviour
     public float distance;
     public LayerMask solidMask;
     public int damage;
+    public string whoToKill;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,9 +24,10 @@ public class Bullet : MonoBehaviour
         RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.up, distance, solidMask);
         if (hitInfo.collider != null)
         {
-            if (hitInfo.collider.CompareTag("Enemy"))
+            if (hitInfo.collider.CompareTag(whoToKill))
             {
-                hitInfo.collider.GetComponent<HealthController>().takeDamage(damage);
+                if(whoToKill == "Enemy") hitInfo.collider.GetComponent<HealthController>().takeDamage(damage);
+                if (whoToKill == "Player") hitInfo.collider.GetComponent<PlayerHandler>().TakeDamage(damage);
             }
             DestroyProjectile();
         }

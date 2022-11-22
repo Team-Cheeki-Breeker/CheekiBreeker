@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class WeaponScript : MonoBehaviour
 {
-
     public float Offset;//{ get; set; }
-    public AudioClip fireCLip;
+    public AudioClip fireClip;
     public AudioClip reloadClip;
    // private float spreadWindow;
    
@@ -66,7 +65,7 @@ public class WeaponScript : MonoBehaviour
                 }
                 FireAway(/*spreadWindow*/);
                 //spreadWindow += spreadIncrease;  
-                GetComponent<AudioSource>().PlayOneShot(fireCLip);
+                GetComponent<AudioSource>().PlayOneShot(fireClip);
                 magazineCurr -= 1;
                 timeBtwShots = startTimeBtwShots;
             }

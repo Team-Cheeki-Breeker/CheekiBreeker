@@ -198,7 +198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  maxHealth: 100
+  maxHealth: 200
   damageYells:
   - {fileID: 8300000, guid: fff61e061f111fe45b1231ff8f54af69, type: 3}
   - {fileID: 8300000, guid: cd11a180f3be97949b7b2d8c9c0e5bdc, type: 3}

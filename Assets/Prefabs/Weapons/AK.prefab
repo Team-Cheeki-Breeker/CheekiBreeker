@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1526798489793215480}
   - component: {fileID: 1526798489793215481}
-  - component: {fileID: 1526798489793215478}
+  - component: {fileID: 8213566447336991278}
   - component: {fileID: 4268711797499693585}
   m_Layer: 0
   m_Name: AK
@@ -87,7 +87,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
---- !u!114 &1526798489793215478
+--- !u!114 &8213566447336991278
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -96,19 +96,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1526798489793215479}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b0e5bda7baf2ae42b32369ddccd4cc6, type: 3}
+  m_Script: {fileID: 11500000, guid: c2b62740c0695e948aa00dc6f1033f01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Offset: 0
-  fireCLip: {fileID: 8300000, guid: 1b145bcffd767854fb0c71c37678ebaa, type: 3}
+  fireClip: {fileID: 8300000, guid: 1b145bcffd767854fb0c71c37678ebaa, type: 3}
   reloadClip: {fileID: 8300000, guid: 406c929b7299afb469c82778f8d15d5b, type: 3}
-  spreadTimeDampen: 20
-  spreadIncrease: 2
   Bullet: {fileID: 3383396530564206888, guid: 1ab76a87fc356bf43a8fe35dce204f7d, type: 3}
   BarrelPos: {fileID: 1526798490122475297}
-  startMag: 60
-  startTimeBtwShots: 0.08
-  startReloadTime: 1.4
+  startMag: 40
+  startTimeBtwShots: 0.15
+  startReloadTime: 0.8
 --- !u!82 &4268711797499693585
 AudioSource:
   m_ObjectHideFlags: 0

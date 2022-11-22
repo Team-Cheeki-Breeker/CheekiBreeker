@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
-public class PlayerHandler : MonoBehaviour
+public class PlayerHandler : MonoBehaviour 
 {
     public float health;            //current health of the player
     public float maxHealth;

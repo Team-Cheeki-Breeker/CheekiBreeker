@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 592277770866581606}
   - component: {fileID: 592277770866581609}
-  - component: {fileID: 592277770866581608}
+  - component: {fileID: 874227352825427273}
   - component: {fileID: 8096248503464701475}
   m_Layer: 0
   m_Name: Bazooka
@@ -87,7 +87,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &592277770866581608
+--- !u!114 &874227352825427273
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -96,17 +96,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 592277770866581611}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b0e5bda7baf2ae42b32369ddccd4cc6, type: 3}
+  m_Script: {fileID: 11500000, guid: c2b62740c0695e948aa00dc6f1033f01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Offset: 0
-  fireCLip: {fileID: 8300000, guid: e993923199a7ecb4bae0e296c630e3b5, type: 3}
+  fireClip: {fileID: 8300000, guid: e993923199a7ecb4bae0e296c630e3b5, type: 3}
   reloadClip: {fileID: 8300000, guid: 406c929b7299afb469c82778f8d15d5b, type: 3}
   Bullet: {fileID: 4985481137299864095, guid: 3ed5ac1c3de7b9a458168dd0250ec521, type: 3}
   BarrelPos: {fileID: 592277772039993221}
   startMag: 1
   startTimeBtwShots: 0
-  startReloadTime: 1.5
+  startReloadTime: 2
 --- !u!82 &8096248503464701475
 AudioSource:
   m_ObjectHideFlags: 0

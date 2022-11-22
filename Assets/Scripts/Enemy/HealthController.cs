@@ -16,7 +16,7 @@ public class HealthController : MonoBehaviour
     public void Start()
     {
         float diffMod = PlayerPrefs.GetFloat("DifficultyValue");
-        HpModified = HpMax + (int)Math.Round(diffMod*diffMod * 200);
+        HpModified = HpMax + (int)Math.Round(diffMod*diffMod * 100);
         Hp = HpModified;
         initialscale = hpBar.transform.localScale;
     }
