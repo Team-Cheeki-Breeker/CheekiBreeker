@@ -1,13 +1,17 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class PlayerHandler : MonoBehaviour
 {
     public float health;            //current health of the player
-    public float maxHealth;         //maximum health of the player
+    public float maxHealth;
+    private float ModifiedMaxHP; //maximum health of the player
     private MovementHandler movementHandler;
     public AudioClip[] damageYells;
     public AudioClip[] shootingYells;
@@ -28,7 +32,9 @@ public class PlayerHandler : MonoBehaviour
     {
         movementHandler = GetComponent<MovementHandler>();
         audioSource.loop = false;
-        health = maxHealth;
+        float diffMod = PlayerPrefs.GetFloat("DifficultyValue");
+        ModifiedMaxHP = maxHealth - (int)Math.Round(diffMod * diffMod * 200);
+        health = ModifiedMaxHP;
     }
 
     public void Update()
@@ -57,7 +63,7 @@ public class PlayerHandler : MonoBehaviour
 
         AmmoText.text = (firstActiveWeapon.GetComponent<WeaponScript>().isRealoading() ? 0 : firstActiveWeapon.GetComponent<WeaponScript>().CurrentMagazine + 1)  
                          + " / " + firstActiveWeapon.GetComponent<WeaponScript>().startMag;
-        HpText.text = health + " / " + maxHealth;
+        HpText.text = health + " / " + ModifiedMaxHP;
     }
 
     /**
@@ -68,7 +74,7 @@ public class PlayerHandler : MonoBehaviour
     {
 
         health -= damage;
-        HpBar.fillAmount = health / maxHealth;
+        HpBar.fillAmount = health / ModifiedMaxHP;
         if (!audioSource.isPlaying && damage >= 10)
         {
             audioSource.PlayOneShot(damageYells[Random.Range(0, damageYells.Length)]);

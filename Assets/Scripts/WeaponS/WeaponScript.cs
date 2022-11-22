@@ -8,7 +8,12 @@ public class WeaponScript : MonoBehaviour
     public float Offset;//{ get; set; }
     public AudioClip fireCLip;
     public AudioClip reloadClip;
+   // private float spreadWindow;
+   
 
+   // public float spreadTimeDampen = 1000.0f;
+   // public float spreadIncrease = 1.0f;
+   // private const float MAX_SPREAD = 20.0f;
     public GameObject Bullet; //{ get; set; }
     public Transform BarrelPos; //{ get; set; }
 
@@ -35,14 +40,15 @@ public class WeaponScript : MonoBehaviour
     {
         magazineCurr = startMag;
         reloadCD = 0;
-
     }
 
     // Update is called once per frame
     void Update()
     {
+        //if (spreadWindow <= 0) spreadWindow = 0; else spreadWindow -= spreadTimeDampen * Time.deltaTime;
         Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+
         transform.rotation = Quaternion.Euler(0f, 0f, rotZ + Offset);
         
 
@@ -56,8 +62,10 @@ public class WeaponScript : MonoBehaviour
                     reloadCD = startReloadTime;
                     magazineCurr = startMag;
                     StartCoroutine(PlayReload(reloadCD * 1.0f - 0.4f));
+                    //spreadWindow = 0;
                 }
-                FireAway();  
+                FireAway(/*spreadWindow*/);
+                //spreadWindow += spreadIncrease;  
                 GetComponent<AudioSource>().PlayOneShot(fireCLip);
                 magazineCurr -= 1;
                 timeBtwShots = startTimeBtwShots;
@@ -77,9 +85,9 @@ public class WeaponScript : MonoBehaviour
         GetComponent<AudioSource>().PlayOneShot(reloadClip);
     }
 
-    public void FireAway()
+    public void FireAway(/*float spread*/)
     {
-        Instantiate(Bullet, BarrelPos.position, transform.rotation);
+        Instantiate(Bullet, BarrelPos.position, transform.rotation /* Quaternion.Euler(0f, 0f, Random.Range(-spread * 1.5f, spread*0.5f))*/);
         onShooting?.Invoke();    
     }
 }

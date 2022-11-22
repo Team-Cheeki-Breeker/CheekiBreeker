@@ -133,6 +133,8 @@ MonoBehaviour:
   Offset: 0
   fireCLip: {fileID: 8300000, guid: 5802cc242c56cfa47a4b9ac4bb747662, type: 3}
   reloadClip: {fileID: 8300000, guid: 406c929b7299afb469c82778f8d15d5b, type: 3}
+  spreadTimeDampen: 10
+  spreadIncrease: 5
   Bullet: {fileID: 4522278964792581636, guid: 65bedcec93232bb4c9b025b07d0417d0, type: 3}
   BarrelPos: {fileID: 1670448262506106514}
   startMag: 10
