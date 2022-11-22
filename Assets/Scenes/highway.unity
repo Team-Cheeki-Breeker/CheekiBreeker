@@ -11569,7 +11569,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5381170628178954235, guid: ea57691e8f88446478a4a4719f61cda2, type: 3}
       propertyPath: m_SortingOrder
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea57691e8f88446478a4a4719f61cda2, type: 3}
@@ -18485,7 +18485,8 @@ GameObject:
   - component: {fileID: 1463604649}
   - component: {fileID: 1463604648}
   - component: {fileID: 1463604647}
-  m_Layer: 6
+  - component: {fileID: 1463604662}
+  m_Layer: 10
   m_Name: kamaz
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18518,7 +18519,7 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 6200000, guid: fb4acfbe126f5d740844250548f5a932, type: 2}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 526.4, y: -3.5187423}
   m_SpriteTilingProperty:
@@ -18544,7 +18545,7 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 6200000, guid: fb4acfbe126f5d740844250548f5a932, type: 2}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 506.4, y: -3.5187423}
   m_SpriteTilingProperty:
@@ -18570,7 +18571,7 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 6200000, guid: fb4acfbe126f5d740844250548f5a932, type: 2}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 457.4, y: -3.5187423}
   m_SpriteTilingProperty:
@@ -18596,7 +18597,7 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 6200000, guid: fb4acfbe126f5d740844250548f5a932, type: 2}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 418.4, y: -3.5187423}
   m_SpriteTilingProperty:
@@ -18622,7 +18623,7 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 6200000, guid: fb4acfbe126f5d740844250548f5a932, type: 2}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 366.4, y: -3.5187423}
   m_SpriteTilingProperty:
@@ -18648,7 +18649,7 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 6200000, guid: fb4acfbe126f5d740844250548f5a932, type: 2}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 337.4, y: -3.5187423}
   m_SpriteTilingProperty:
@@ -18674,7 +18675,7 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 6200000, guid: fb4acfbe126f5d740844250548f5a932, type: 2}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 293.4, y: -3.5187423}
   m_SpriteTilingProperty:
@@ -18700,7 +18701,7 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 6200000, guid: fb4acfbe126f5d740844250548f5a932, type: 2}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 264.4, y: -3.5187423}
   m_SpriteTilingProperty:
@@ -18726,7 +18727,7 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 6200000, guid: fb4acfbe126f5d740844250548f5a932, type: 2}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 247.4, y: -3.5187423}
   m_SpriteTilingProperty:
@@ -18752,7 +18753,7 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 6200000, guid: fb4acfbe126f5d740844250548f5a932, type: 2}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 211.4, y: -3.5187423}
   m_SpriteTilingProperty:
@@ -18778,7 +18779,7 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 6200000, guid: fb4acfbe126f5d740844250548f5a932, type: 2}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 143.4, y: -3.5187423}
   m_SpriteTilingProperty:
@@ -18804,7 +18805,7 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 6200000, guid: fb4acfbe126f5d740844250548f5a932, type: 2}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 107.4, y: -3.5187423}
   m_SpriteTilingProperty:
@@ -18830,7 +18831,7 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 6200000, guid: fb4acfbe126f5d740844250548f5a932, type: 2}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 29.429474, y: -3.5187423}
   m_SpriteTilingProperty:
@@ -19086,6 +19087,25 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!251 &1463604662
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1463604645}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 135
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1001 &1531547822
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19271,7 +19291,8 @@ GameObject:
   - component: {fileID: 1669493539}
   - component: {fileID: 1669493538}
   - component: {fileID: 1669493540}
-  m_Layer: 6
+  - component: {fileID: 1669493541}
+  m_Layer: 10
   m_Name: 2nd level cars
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19883,13 +19904,32 @@ TilemapCollider2D:
   m_GameObject: {fileID: 1669493535}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: fb4acfbe126f5d740844250548f5a932, type: 2}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
+--- !u!251 &1669493541
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1669493535}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 100
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &1713087994
 GameObject:
   m_ObjectHideFlags: 0
@@ -20514,7 +20554,8 @@ GameObject:
   - component: {fileID: 1966388163}
   - component: {fileID: 1966388162}
   - component: {fileID: 1966388164}
-  m_Layer: 6
+  - component: {fileID: 1966388165}
+  m_Layer: 10
   m_Name: cars
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20926,11 +20967,30 @@ TilemapCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
+--- !u!251 &1966388165
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1966388159}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 100
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &1974354356
 GameObject:
   m_ObjectHideFlags: 0
