@@ -12,6 +12,7 @@ public class PlayerHandler : MonoBehaviour
     public float health;            //current health of the player
     public float maxHealth;
     private float ModifiedMaxHP; //maximum health of the player
+    private bool Dead = false;
     private MovementHandler movementHandler;
     public AudioClip[] damageYells;
     public AudioClip[] shootingYells;
@@ -88,7 +89,7 @@ public class PlayerHandler : MonoBehaviour
         }
         if(health <= 0)
         {
-            //TODO: Death
+            Dead = true;
         }
         
     }
@@ -101,6 +102,9 @@ public class PlayerHandler : MonoBehaviour
         }
     }
 
-
+    public bool IsDead()
+    {
+        return Dead;
+    }
     
 }

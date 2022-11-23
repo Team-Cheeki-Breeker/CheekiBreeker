@@ -48,7 +48,7 @@ public class GameUIScript : MonoBehaviour
         
         finalCountDown -= Time.deltaTime;
         if (finalCountDown <= 0) finalCountDown = 0;
-        return finalCountDown <= 0;
+        return finalCountDown <= 0 || GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHandler>().IsDead();
     }
 
     public void SetPaused(bool b)
