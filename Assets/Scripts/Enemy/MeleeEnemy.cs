@@ -14,18 +14,14 @@ public class MeleeEnemy : MonoBehaviour
 
     private Animator animator;
     private EnemyMovement enemyPatrolling;
+    private PlayerHandler playerHealth;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
         enemyPatrolling = GetComponentInParent<EnemyMovement>();
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
+   
     // Update is called once per frame
     private void Update()
     {
@@ -50,6 +46,10 @@ public class MeleeEnemy : MonoBehaviour
             0,
             playerLayer
             );
+
+        if (hit.collider != null) { 
+            playerHealth = hit.transform.GetComponent<PlayerHandler>();
+        }
         return hit.collider != null;
     }
 
@@ -66,7 +66,7 @@ public class MeleeEnemy : MonoBehaviour
     {
         if (PlayerInSight())
         {
-            //Damage player hp
+            playerHealth.TakeDamage(damage);
         }
     }
 }
