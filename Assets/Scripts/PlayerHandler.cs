@@ -90,8 +90,12 @@ public class PlayerHandler : MonoBehaviour
         if(health <= 0)
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             GameObject control = GameObject.FindGameObjectWithTag("GameControl");
             control.GetComponent<GameUIScript>().EndGame();
+=======
+            Dead = true;
+>>>>>>> a8d345b0d7d8fda384dffc156492d64763f8c959
 =======
             Dead = true;
 >>>>>>> a8d345b0d7d8fda384dffc156492d64763f8c959
