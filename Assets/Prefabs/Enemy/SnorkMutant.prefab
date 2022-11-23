@@ -213,7 +213,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 8
-  range: 20
+  range: 15
   colliderDistance: 0
   jumpHeight: 1.5
   layerMask:
