@@ -107,6 +107,7 @@ public class MovementMotor : MonoBehaviour
             yield return new WaitForSeconds(0.02f);
         }
         isGrounded = currentGrounded;
+        animator.SetBool("IsGrounded", isGrounded);
     }
 
     /**

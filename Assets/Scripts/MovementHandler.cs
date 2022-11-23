@@ -12,6 +12,9 @@ public class MovementHandler : MonoBehaviour
     private Animator animator;                  //Animator of object
     public float AttackCooldown;
     private float AttackCurrent = 0;
+    private GameObject hand;
+    private GameObject weaponHolder;
+    private GameObject meleeHitbox;
     [SerializeField] private List<Collider2D> SEnableCollider = new List<Collider2D>();
     [SerializeField] private List<Collider2D> SDisableCollider = new List<Collider2D>();
     [SerializeField] private List<Collider2D> WEnableCollider = new List<Collider2D>();
@@ -24,7 +27,11 @@ public class MovementHandler : MonoBehaviour
     {
         movementMotor = GetComponent<MovementMotor>();
         CanMove = true;
-        animator = this.GetComponentInChildren<Animator>(); ;
+        animator = this.GetComponentInChildren<Animator>(); 
+        weaponHolder = GameObject.Find("WeaponHolder");
+        hand = GameObject.Find("Hand");
+        meleeHitbox = GameObject.Find("MeleeHitbox");
+        meleeHitbox.SetActive(false);
     }
 
     /**
@@ -112,6 +119,9 @@ public class MovementHandler : MonoBehaviour
         if (AttackCooldown <= AttackCurrent)
         {
             inAttack = false;
+            weaponHolder.SetActive(true);
+            hand.SetActive(true);
+            meleeHitbox.SetActive(false);
             AttackCurrent = 0;
         }
         if (inAttack)
@@ -164,6 +174,9 @@ public class MovementHandler : MonoBehaviour
         {
             animator.SetTrigger("Slash");
             inAttack = true;
+            weaponHolder.SetActive(false);
+            hand.SetActive(false);
+            meleeHitbox.SetActive(true);
         }
     }
 }
