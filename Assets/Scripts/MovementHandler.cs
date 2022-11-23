@@ -12,6 +12,10 @@ public class MovementHandler : MonoBehaviour
     private Animator animator;                  //Animator of object
     public float AttackCooldown;
     private float AttackCurrent = 0;
+    [SerializeField] private List<Collider2D> SEnableCollider = new List<Collider2D>();
+    [SerializeField] private List<Collider2D> SDisableCollider = new List<Collider2D>();
+    [SerializeField] private List<Collider2D> WEnableCollider = new List<Collider2D>();
+    [SerializeField] private List<Collider2D> WDisableCollider = new List<Collider2D>();
 
     /**
      * Start function of handler
@@ -59,6 +63,39 @@ public class MovementHandler : MonoBehaviour
             if (Input.GetButton("Fire2"))
             {
                 Slash();
+            }
+            if(Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                foreach(var collider in SEnableCollider)
+                {
+                    collider.enabled = true;
+                }
+                foreach (var collider in SDisableCollider)
+                {
+                    collider.enabled = false;
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                foreach (var collider in WEnableCollider)
+                {
+                    collider.enabled = true;
+                }
+                foreach (var collider in WDisableCollider)
+                {
+                    collider.enabled = false;
+                }
+            }
+            if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.UpArrow))
+            {
+                foreach (var collider in WEnableCollider)
+                {
+                    collider.enabled = false;
+                }
+                foreach (var collider in WDisableCollider)
+                {
+                    collider.enabled = true;
+                }
             }
         }
         if (AttackCooldown <= AttackCurrent)

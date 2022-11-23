@@ -188,6 +188,11 @@ MonoBehaviour:
   KnockbackForce: 5
   KnockbackDirection: {x: 1, y: 1}
   AttackCooldown: 10
+  SEnableCollider:
+  - {fileID: 0}
+  SDisableCollider: []
+  WEnableCollider: []
+  WDisableCollider: []
 --- !u!114 &1368973539009884393
 MonoBehaviour:
   m_ObjectHideFlags: 0
