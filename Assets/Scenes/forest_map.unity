@@ -389,7 +389,7 @@ GameObject:
   - component: {fileID: 222912067}
   - component: {fileID: 222912066}
   - component: {fileID: 222912065}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: tarins
   m_TagString: Untagged
   m_Icon: {fileID: 0}

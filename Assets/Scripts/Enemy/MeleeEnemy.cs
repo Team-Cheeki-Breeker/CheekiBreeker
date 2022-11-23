@@ -4,7 +4,9 @@ public class MeleeEnemy : MonoBehaviour
 {
     [SerializeField] private float attackCooldown;
     [SerializeField] private float range;
-    [SerializeField] private float colliderDistance;
+    [SerializeField] private float colliderDistance;    
+
+    [SerializeField] private AudioSource source;
 
     [SerializeField] private int damage;
     [SerializeField] private BoxCollider2D boxCollider;
@@ -17,7 +19,7 @@ public class MeleeEnemy : MonoBehaviour
     private PlayerHandler playerHealth;
 
     private void Awake()
-    {
+    {       
         animator = GetComponent<Animator>();
         enemyPatrolling = GetComponentInParent<EnemyMovement>();
     }
@@ -38,6 +40,7 @@ public class MeleeEnemy : MonoBehaviour
         }
     }
     private bool PlayerInSight() {
+      //  source.Play();
         RaycastHit2D hit = Physics2D.BoxCast(
             boxCollider.bounds.center + transform.right* range *transform.localScale.x * colliderDistance,
             new Vector3(boxCollider.bounds.size.x * range, boxCollider.bounds.size.y, boxCollider.bounds.size.z),
@@ -66,6 +69,7 @@ public class MeleeEnemy : MonoBehaviour
     {
         if (PlayerInSight())
         {
+           
             playerHealth.TakeDamage(damage);
         }
     }
