@@ -31412,7 +31412,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1368973539009884394, guid: ea57691e8f88446478a4a4719f61cda2, type: 3}
       propertyPath: SDisableCollider.Array.size
-      value: 44
+      value: 49
       objectReference: {fileID: 0}
     - target: {fileID: 1368973539009884394, guid: ea57691e8f88446478a4a4719f61cda2, type: 3}
       propertyPath: SEnableCollider.Array.data[0]
@@ -31686,6 +31686,26 @@ PrefabInstance:
       propertyPath: SDisableCollider.Array.data[43]
       value: 
       objectReference: {fileID: 1885958961}
+    - target: {fileID: 1368973539009884394, guid: ea57691e8f88446478a4a4719f61cda2, type: 3}
+      propertyPath: SDisableCollider.Array.data[44]
+      value: 
+      objectReference: {fileID: 845314113}
+    - target: {fileID: 1368973539009884394, guid: ea57691e8f88446478a4a4719f61cda2, type: 3}
+      propertyPath: SDisableCollider.Array.data[45]
+      value: 
+      objectReference: {fileID: 1918452803}
+    - target: {fileID: 1368973539009884394, guid: ea57691e8f88446478a4a4719f61cda2, type: 3}
+      propertyPath: SDisableCollider.Array.data[46]
+      value: 
+      objectReference: {fileID: 1113768828}
+    - target: {fileID: 1368973539009884394, guid: ea57691e8f88446478a4a4719f61cda2, type: 3}
+      propertyPath: SDisableCollider.Array.data[47]
+      value: 
+      objectReference: {fileID: 183047178}
+    - target: {fileID: 1368973539009884394, guid: ea57691e8f88446478a4a4719f61cda2, type: 3}
+      propertyPath: SDisableCollider.Array.data[48]
+      value: 
+      objectReference: {fileID: 1639197182}
     - target: {fileID: 1368973539117111125, guid: ea57691e8f88446478a4a4719f61cda2, type: 3}
       propertyPath: m_Layer
       value: 3
