@@ -127,7 +127,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.23458368, y: -0.0781948}
+  m_Offset: {x: -0.23458368, y: -0.16096497}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -138,7 +138,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.6859659, y: 3.5481243}
+  m_Size: {x: 1.6859659, y: 3.7136645}
   m_EdgeRadius: 0
 --- !u!114 &2339243563164535694
 MonoBehaviour:
@@ -154,6 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HpMax: 100
   hpBar: {fileID: 2887204167715714928}
+  animator: {fileID: 676373655463755482}
 --- !u!114 &676373655463755484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,8 +211,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftEdge: {fileID: 0}
   rightEdge: {fileID: 0}
+  enemy: {fileID: 676373655463755480}
   speed: 2.3
   idleDuration: 1
+  enemyBoxCollider: {fileID: 676373655463755483}
   playerLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -473,7 +476,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3136074221531780768}
   - component: {fileID: 1077805257484845794}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Feet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -488,7 +491,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6393893498466931126}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.3, y: -1.94, z: -0.11286914}
+  m_LocalPosition: {x: -0.29, y: -2.08, z: -0.11286914}
   m_LocalScale: {x: 2.6728663, y: 3.333333, z: 1.25}
   m_ConstrainProportionsScale: 0
   m_Children: []

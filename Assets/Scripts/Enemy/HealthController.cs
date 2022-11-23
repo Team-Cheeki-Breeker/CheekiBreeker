@@ -11,6 +11,7 @@ public class HealthController : MonoBehaviour
     public int HpMax;
     private int HpModified;
     public GameObject hpBar;
+    public Animator animator;
     private Vector3 initialscale;
 
     public void Start()
@@ -31,7 +32,11 @@ public class HealthController : MonoBehaviour
     {
         if(Hp <= 0)
         {
-            Destroy(gameObject);
+            animator.SetTrigger("died");
         }
+    }
+    public void DestroyObject()
+    {
+        Destroy(gameObject);
     }
 }

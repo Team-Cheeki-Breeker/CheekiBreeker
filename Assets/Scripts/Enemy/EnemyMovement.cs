@@ -9,16 +9,14 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private Transform rightEdge;
 
     [Header("Enemy")]
-     private Transform enemy;
+    [SerializeField] private Transform enemy;
     private Vector3 initScale;
     private Rigidbody2D rigidbody;
-   
 
 
     [Header("Movement parameters")]
     [SerializeField] private float speed;
     private bool movingLeft;
-    private bool leftPatrol = false;
 
     [Header("Idle Behaviour")]
     [SerializeField] private float idleDuration;
@@ -28,7 +26,7 @@ public class EnemyMovement : MonoBehaviour
      private Animator animator;
 
     [Header("Player detection")]
-    private BoxCollider2D boxCollider;
+    [SerializeField] BoxCollider2D enemyBoxCollider;
     [SerializeField] private LayerMask playerLayer;
     [SerializeField] private float range;
     [SerializeField] private float colliderDistance;
@@ -36,7 +34,6 @@ public class EnemyMovement : MonoBehaviour
     [Header("Jump")]
     private bool isGrounded = true;
     [SerializeField] private float jumpHeight;
-    private bool isJumping = false;
     [SerializeField] LayerMask layerMask;
     [SerializeField] private Transform wallCheck;
     [SerializeField] private BoxCollider2D wallCheckBox;
@@ -45,16 +42,14 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private BoxCollider2D feetBox;
     [SerializeField] Transform Feet;
 
-    private int jumpCooldown = 1;
-    private float jumpTimer = 1;
+    private float jumpCooldown = 1;
+    private float jumpTimer = 0;
     private GameObject playerObj = null;
     private void Awake()
     {
 
         rigidbody = GetComponent<Rigidbody2D>();
-        boxCollider = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();
-        enemy = GetComponent<Transform>();
         initScale = enemy.localScale;
         playerObj = GameObject.FindGameObjectWithTag("Player");
     }
@@ -77,15 +72,20 @@ public class EnemyMovement : MonoBehaviour
 
         if (animator.GetBool("alerted"))
         {
-            if (movementLimited)
+            if(movementLimited)
             {
                 if(isGrounded)
                 {
-                   
-                    float distanceFromPlayer = (playerObj.transform.position.x - enemy.position.x);
-                    animator.SetBool("jumping", true);
-                    rigidbody.AddForce(new Vector2(distanceFromPlayer, jumpHeight), ForceMode2D.Impulse);
-                    animator.SetBool("jumping", false);
+                    jumpTimer += Time.deltaTime;
+                    if(jumpTimer >= jumpCooldown)
+                    {
+
+                        float distanceFromPlayer = (playerObj.transform.position.x - enemy.position.x);
+                        animator.SetBool("jumping", true);
+                        rigidbody.AddForce(new Vector2(distanceFromPlayer, jumpHeight), ForceMode2D.Impulse);
+                        animator.SetBool("jumping", false);
+                        jumpTimer = 0;
+                    }
 
                 }
             } 
@@ -102,37 +102,35 @@ public class EnemyMovement : MonoBehaviour
             }
             if (enemy.position.x < leftEdge.position.x || enemy.position.x >= rightEdge.position.x)
             {
-                leftPatrol = true;
                 leftEdge.position = new Vector3(enemy.position.x - 3, leftEdge.position.y, leftEdge.position.z);
                 rightEdge.position = new Vector3(enemy.position.x + 3, rightEdge.position.y, rightEdge.position.z);
             }
         } else
         {
-            if (!leftPatrol)
+            
+            if (movingLeft)
             {
-                if (movingLeft)
-                {
-                    if (enemy.position.x >= leftEdge.position.x)
-                        MoveInDirection(-1);
-                    else
-                        DirectionChange();
-                }
+                if (enemy.position.x >= leftEdge.position.x)
+                    MoveInDirection(-1);
                 else
-                {
-                    if (enemy.position.x <= rightEdge.position.x)
-                        MoveInDirection(1);
-                    else
-                        DirectionChange();
-                }
+                    DirectionChange();
             }
+            else
+            {
+                if (enemy.position.x <= rightEdge.position.x)
+                    MoveInDirection(1);
+                else
+                    DirectionChange();
+            }
+            
         }
    
     }
     private bool PlayerInSight()
     {
         RaycastHit2D inSight = Physics2D.BoxCast(
-            boxCollider.bounds.center + transform.right * range * transform.localScale.x * colliderDistance,
-            new Vector3(boxCollider.bounds.size.x * range, boxCollider.bounds.size.y* 3, boxCollider.bounds.size.z),
+            enemyBoxCollider.bounds.center + enemy.right * range * enemy.localScale.x * colliderDistance,
+            new Vector3(enemyBoxCollider.bounds.size.x * range, enemyBoxCollider.bounds.size.y* 3, enemyBoxCollider.bounds.size.z),
             0,
             Vector2.left,
             0,
@@ -145,8 +143,8 @@ public class EnemyMovement : MonoBehaviour
     {
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireCube(
-            boxCollider.bounds.center + transform.right * range * transform.localScale.x * colliderDistance,
-            new Vector3(boxCollider.bounds.size.x * range, boxCollider.bounds.size.y *3, boxCollider.bounds.size.z)
+            enemyBoxCollider.bounds.center + enemy.right * range * enemy.localScale.x * colliderDistance,
+            new Vector3(enemyBoxCollider.bounds.size.x * range, enemyBoxCollider.bounds.size.y *3, enemyBoxCollider.bounds.size.z)
             );
     }
 
@@ -189,5 +187,10 @@ public class EnemyMovement : MonoBehaviour
     }
 
 
-
+    public void SwitchColliders()
+    {
+        enemyBoxCollider.size.Set(7, 2);
+        enemyBoxCollider.offset.Set(0, 0);
+        Destroy(feetBox);
+    }
 }
