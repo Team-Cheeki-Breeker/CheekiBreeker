@@ -10,12 +10,15 @@ public class GameUIScript : MonoBehaviour
     public GameObject LoseScreen; 
     public GameObject PauseScreen;
     public TextMeshProUGUI finalCountDownText;
+    public TextMeshProUGUI GoalText;
     public float finalCountDown;
     private bool paused = false;
+    private bool gameEnded = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        gameEnded = false;
         paused = false;
         Time.timeScale = 1f;
     }
@@ -23,32 +26,38 @@ public class GameUIScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Vector3 difference = GameObject.FindGameObjectWithTag("Player").transform.position - GameObject.FindGameObjectWithTag("Goal").transform.position;
+        GoalText.text = "Objective:\nReach the Lada (" + ((int) Math.Round( difference.magnitude)).ToString() +"m)";
+
         float minutes = Mathf.FloorToInt(finalCountDown / 60);
         float seconds = Mathf.FloorToInt(finalCountDown % 60);
         finalCountDownText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+
         if (!paused)
         {
-            if(gameEnd())
+            if(gameEnd() )
             {
-                Time.timeScale = 0f;
+                gameEnded = true;
                 LoseScreen.SetActive(true);
                 SetPaused(true);
             }
         }           
 
         if (Input.GetKeyDown(KeyCode.Escape)){
-            Time.timeScale = 0f;
             PauseScreen.SetActive(true);
             SetPaused(true);
         }
     }
 
     Boolean gameEnd()
-    {
-        
+    {       
         finalCountDown -= Time.deltaTime;
         if (finalCountDown <= 0) finalCountDown = 0;
-        return finalCountDown <= 0;
+<<<<<<< HEAD
+        return finalCountDown <= 0 || gameEnded;
+=======
+        return finalCountDown <= 0 || GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHandler>().IsDead();
+>>>>>>> a8d345b0d7d8fda384dffc156492d64763f8c959
     }
 
     public void SetPaused(bool b)
@@ -69,6 +78,11 @@ public class GameUIScript : MonoBehaviour
     {
         SetPaused(false);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void EndGame()
+    {
+        gameEnded = true;
     }
 }
 

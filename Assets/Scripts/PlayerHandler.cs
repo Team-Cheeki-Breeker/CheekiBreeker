@@ -12,6 +12,7 @@ public class PlayerHandler : MonoBehaviour
     public float health;            //current health of the player
     public float maxHealth;
     private float ModifiedMaxHP; //maximum health of the player
+    private bool Dead = false;
     private MovementHandler movementHandler;
     public AudioClip[] damageYells;
     public AudioClip[] shootingYells;
@@ -88,7 +89,12 @@ public class PlayerHandler : MonoBehaviour
         }
         if(health <= 0)
         {
-            //TODO: Death
+<<<<<<< HEAD
+            GameObject control = GameObject.FindGameObjectWithTag("GameControl");
+            control.GetComponent<GameUIScript>().EndGame();
+=======
+            Dead = true;
+>>>>>>> a8d345b0d7d8fda384dffc156492d64763f8c959
         }
         
     }
@@ -101,6 +107,9 @@ public class PlayerHandler : MonoBehaviour
         }
     }
 
-
+    public bool IsDead()
+    {
+        return Dead;
+    }
     
 }

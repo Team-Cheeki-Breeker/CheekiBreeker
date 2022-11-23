@@ -8,6 +8,8 @@ TagManager:
   - Boundary
   - Bullet
   - Anomaly
+  - GameControl
+  - Goal
   layers:
   - Default
   - TransparentFX

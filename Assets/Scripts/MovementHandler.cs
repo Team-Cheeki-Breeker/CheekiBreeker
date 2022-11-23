@@ -75,6 +75,17 @@ public class MovementHandler : MonoBehaviour
                     collider.enabled = false;
                 }
             }
+            if (Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.DownArrow))
+            {
+                foreach (var collider in SEnableCollider)
+                {
+                    collider.enabled = false;
+                }
+                foreach (var collider in SDisableCollider)
+                {
+                    collider.enabled = true;
+                }
+            }
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
             {
                 foreach (var collider in WEnableCollider)
