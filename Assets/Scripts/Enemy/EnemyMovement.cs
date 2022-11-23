@@ -45,6 +45,7 @@ public class EnemyMovement : MonoBehaviour
     private float jumpCooldown = 1;
     private float jumpTimer = 0;
     private GameObject playerObj = null;
+    private bool died = false;
     private void Awake()
     {
 
@@ -55,76 +56,80 @@ public class EnemyMovement : MonoBehaviour
     }
     private void Update()
     {
-        StartCoroutine(CheckGrounded());
+        if(!died)
+        {
+            StartCoroutine(CheckGrounded());
        
-        movementLimited = Physics2D.OverlapBox(wallCheck.position, wallCheckBox.size, 0, layerMask);
+            movementLimited = Physics2D.OverlapBox(wallCheck.position, wallCheckBox.size, 0, layerMask);
 
-        if (PlayerInSight())
-        {
-            animator.SetBool("alerted", true);
-        }
-        else
-        {
-            animator.SetBool("alerted", false);
-        }
-
-
-
-        if (animator.GetBool("alerted"))
-        {
-            if(movementLimited)
+            if (PlayerInSight())
             {
-                if(isGrounded)
-                {
-                    jumpTimer += Time.deltaTime;
-                    if(jumpTimer >= jumpCooldown)
-                    {
-
-                        float distanceFromPlayer = (playerObj.transform.position.x - enemy.position.x);
-                        animator.SetBool("jumping", true);
-                        rigidbody.AddForce(new Vector2(distanceFromPlayer, jumpHeight), ForceMode2D.Impulse);
-                        animator.SetBool("jumping", false);
-                        jumpTimer = 0;
-                    }
-
-                }
-            } 
-            if(!animator.GetBool("jumping"))
-            {
-                if (enemy.position.x > playerObj.transform.position.x)
-                {
-                    MoveInDirection(-1);
-                }
-                else
-                {
-                    MoveInDirection(1);
-                }
-            }
-            if (enemy.position.x < leftEdge.position.x || enemy.position.x >= rightEdge.position.x)
-            {
-                leftEdge.position = new Vector3(enemy.position.x - 3, leftEdge.position.y, leftEdge.position.z);
-                rightEdge.position = new Vector3(enemy.position.x + 3, rightEdge.position.y, rightEdge.position.z);
-            }
-        } else
-        {
-            
-            if (movingLeft)
-            {
-                if (enemy.position.x >= leftEdge.position.x)
-                    MoveInDirection(-1);
-                else
-                    DirectionChange();
+                animator.SetBool("alerted", true);
             }
             else
             {
-                if (enemy.position.x <= rightEdge.position.x)
-                    MoveInDirection(1);
-                else
-                    DirectionChange();
+                animator.SetBool("alerted", false);
             }
+
+
+
+            if (animator.GetBool("alerted"))
+            {
+                if(movementLimited)
+                {
+                    if(isGrounded)
+                    {
+                        jumpTimer += Time.deltaTime;
+                        if(jumpTimer >= jumpCooldown)
+                        {
+
+                            float distanceFromPlayer = (playerObj.transform.position.x - enemy.position.x);
+                            animator.SetBool("jumping", true);
+                            rigidbody.AddForce(new Vector2(distanceFromPlayer, jumpHeight), ForceMode2D.Impulse);
+                            animator.SetBool("jumping", false);
+                            jumpTimer = 0;
+                        }
+
+                    }
+                } 
+                if(!animator.GetBool("jumping"))
+                {
+                    if (enemy.position.x > playerObj.transform.position.x)
+                    {
+                        MoveInDirection(-1);
+                    }
+                    else
+                    {
+                        MoveInDirection(1);
+                    }
+                }
+                if (enemy.position.x < leftEdge.position.x || enemy.position.x >= rightEdge.position.x)
+                {
+                    leftEdge.position = new Vector3(enemy.position.x - 3, leftEdge.position.y, leftEdge.position.z);
+                    rightEdge.position = new Vector3(enemy.position.x + 3, rightEdge.position.y, rightEdge.position.z);
+                }
+            } else
+            {
             
-        }
+                if (movingLeft)
+                {
+                    if (enemy.position.x >= leftEdge.position.x)
+                        MoveInDirection(-1);
+                    else
+                        DirectionChange();
+                }
+                else
+                {
+                    if (enemy.position.x <= rightEdge.position.x)
+                        MoveInDirection(1);
+                    else
+                        DirectionChange();
+                }
+            
+            }
    
+
+        }
     }
     private bool PlayerInSight()
     {
@@ -186,11 +191,12 @@ public class EnemyMovement : MonoBehaviour
         isGrounded = currentGrounded;
     }
 
-
+    //Stops the movement, switches enemys boxcollider to a deathboxcollider
     public void SwitchColliders()
     {
-        enemyBoxCollider.size.Set(7, 2);
-        enemyBoxCollider.offset.Set(0, 0);
+        animator.SetBool("moving", false);
+        died = true;
+        enemyBoxCollider.size = new Vector2(7, 2);
         Destroy(feetBox);
     }
 }
