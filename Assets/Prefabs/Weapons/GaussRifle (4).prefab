@@ -41,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 576306972534027021}
   - component: {fileID: 576306972534027022}
-  - component: {fileID: 576306972534027023}
+  - component: {fileID: 1865618415259527033}
   - component: {fileID: -2928388773422762831}
   m_Layer: 0
   m_Name: GaussRifle (4)
@@ -118,7 +118,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &576306972534027023
+--- !u!114 &1865618415259527033
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -127,19 +127,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 576306972534027016}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b0e5bda7baf2ae42b32369ddccd4cc6, type: 3}
+  m_Script: {fileID: 11500000, guid: c2b62740c0695e948aa00dc6f1033f01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Offset: 0
-  fireCLip: {fileID: 8300000, guid: 4d6d816408e48e7428e863203522508f, type: 3}
+  fireClip: {fileID: 8300000, guid: 4d6d816408e48e7428e863203522508f, type: 3}
   reloadClip: {fileID: 8300000, guid: 406c929b7299afb469c82778f8d15d5b, type: 3}
-  spreadTimeDampen: 4
-  spreadIncrease: 2
   Bullet: {fileID: 6589929864558230694, guid: cdec9bf4dce38f140b62185dd8df31ac, type: 3}
   BarrelPos: {fileID: 576306971393210967}
   startMag: 5
   startTimeBtwShots: 0.4
-  startReloadTime: 1.8
+  startReloadTime: 1
 --- !u!82 &-2928388773422762831
 AudioSource:
   m_ObjectHideFlags: 0

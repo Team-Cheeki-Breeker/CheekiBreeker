@@ -143,6 +143,9 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 64
+  oneWayLayer:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!61 &1368973539009884395
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -198,7 +201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  maxHealth: 100
+  maxHealth: 200
   damageYells:
   - {fileID: 8300000, guid: fff61e061f111fe45b1231ff8f54af69, type: 3}
   - {fileID: 8300000, guid: cd11a180f3be97949b7b2d8c9c0e5bdc, type: 3}
@@ -913,7 +916,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: fad965909f2e2ff40a6856990c9b7a16, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -22,7 +22,6 @@ public class radation : MonoBehaviour
             if (cooldownTimer >= attackCooldown)
             {
                 cooldownTimer = 0;
-                if(!GetComponent<AudioSource>().isPlaying) GetComponent<AudioSource>().PlayOneShot(fireCLip);
                 Damage(colliders);
             }
         }
@@ -53,6 +52,7 @@ public class radation : MonoBehaviour
             if(collision.tag == "Player")
             {
                 collision.GetComponent<PlayerHandler>().TakeDamage(damage);
+                if (!GetComponent<AudioSource>().isPlaying) GetComponent<AudioSource>().PlayOneShot(fireCLip);
             }
             else if(collision.tag == "Enemy")
             {
