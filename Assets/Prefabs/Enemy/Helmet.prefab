@@ -123,6 +123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HpMax: 50
   hpBar: {fileID: 3868427151764476154}
+  animator: {fileID: 331572568653769304}
 --- !u!61 &-196611069701931235
 BoxCollider2D:
   m_ObjectHideFlags: 0
