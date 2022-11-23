@@ -7134,6 +7134,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goal
       objectReference: {fileID: 0}
+    - target: {fileID: 709086588905898592, guid: 886478d72cd13ec4681268807eb9cb81, type: 3}
+      propertyPath: m_TagString
+      value: Goal
+      objectReference: {fileID: 0}
     - target: {fileID: 709086588905898597, guid: 886478d72cd13ec4681268807eb9cb81, type: 3}
       propertyPath: m_RootOrder
       value: 1
