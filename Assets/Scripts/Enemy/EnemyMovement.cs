@@ -10,8 +10,10 @@ public class EnemyMovement : MonoBehaviour
 
     [Header("Enemy")]
     [SerializeField] private Transform enemy;
+    [SerializeField] private Transform enemyWeapon;
+    [SerializeField] private bool hasWeapon;
     private Vector3 initScale;
-    private Rigidbody2D rigidbody;
+    private new Rigidbody2D rigidbody;
 
 
     [Header("Movement parameters")]
@@ -32,18 +34,20 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private float colliderDistance;
 
     [Header("Jump")]
-    private bool isGrounded = true;
+    [SerializeField] private bool canJump;
     [SerializeField] private float jumpHeight;
     [SerializeField] LayerMask layerMask;
     [SerializeField] private Transform wallCheck;
     [SerializeField] private BoxCollider2D wallCheckBox;
-
+    private bool isGrounded = true;
+    private float jumpTimer = 1;
+    private float jumpCooldown = 1;
     private bool movementLimited = false;
+    private bool isUnderPlayer = false;
     [SerializeField] private BoxCollider2D feetBox;
     [SerializeField] Transform Feet;
 
-    private float jumpCooldown = 1;
-    private float jumpTimer = 0;
+
     private GameObject playerObj = null;
     private bool died = false;
     private void Awake()
@@ -54,13 +58,10 @@ public class EnemyMovement : MonoBehaviour
         initScale = enemy.localScale;
         playerObj = GameObject.FindGameObjectWithTag("Player");
     }
-    private void Update()
+    private void FixedUpdate()
     {
         if(!died)
         {
-            StartCoroutine(CheckGrounded());
-       
-            movementLimited = Physics2D.OverlapBox(wallCheck.position, wallCheckBox.size, 0, layerMask);
 
             if (PlayerInSight())
             {
@@ -71,38 +72,55 @@ public class EnemyMovement : MonoBehaviour
                 animator.SetBool("alerted", false);
             }
 
+            if (canJump)
+            {
+                float yDistanceFromPlayer =  playerObj.transform.position.y - enemy.position.y;
+                float xDistanceFromPlayer = enemy.position.x - playerObj.transform.position.x;
+                isGrounded = Physics2D.OverlapBox(Feet.position, feetBox.size, 0, layerMask);
+                movementLimited = Physics2D.OverlapBox(wallCheck.position, wallCheckBox.size, 0, layerMask);
+                 if(yDistanceFromPlayer > 1 && Mathf.Abs(xDistanceFromPlayer) < 3 )
+                {
+                    isUnderPlayer = true;
+                } else
+                {
+                    isUnderPlayer = false;
+                }
+
+                if (isGrounded && jumpTimer >= jumpCooldown)
+                {
+                    animator.SetBool("jumping", false);
+                }
+
+            }
+          
 
 
             if (animator.GetBool("alerted"))
             {
-                if(movementLimited)
+                if(canJump)
                 {
-                    if(isGrounded)
+                    jumpTimer += Time.deltaTime;
+                    if (movementLimited || isUnderPlayer)
                     {
-                        jumpTimer += Time.deltaTime;
-                        if(jumpTimer >= jumpCooldown)
+
+                        if (jumpTimer > jumpCooldown)
                         {
-
-                            float distanceFromPlayer = (playerObj.transform.position.x - enemy.position.x);
-                            animator.SetBool("jumping", true);
-                            rigidbody.AddForce(new Vector2(distanceFromPlayer, jumpHeight), ForceMode2D.Impulse);
-                            animator.SetBool("jumping", false);
-                            jumpTimer = 0;
+                            JumpTowardsPlayer();
                         }
-
-                    }
-                } 
-                if(!animator.GetBool("jumping"))
-                {
-                    if (enemy.position.x > playerObj.transform.position.x)
-                    {
-                        MoveInDirection(-1);
-                    }
-                    else
-                    {
-                        MoveInDirection(1);
                     }
                 }
+            
+            
+                
+                if (enemy.position.x > playerObj.transform.position.x)
+                {
+                    MoveInDirection(-1);
+                }
+                else
+                {
+                    MoveInDirection(1);
+                }
+               
                 if (enemy.position.x < leftEdge.position.x || enemy.position.x >= rightEdge.position.x)
                 {
                     leftEdge.position = new Vector3(enemy.position.x - 3, leftEdge.position.y, leftEdge.position.z);
@@ -110,7 +128,7 @@ public class EnemyMovement : MonoBehaviour
                 }
             } else
             {
-            
+             
                 if (movingLeft)
                 {
                     if (enemy.position.x >= leftEdge.position.x)
@@ -127,7 +145,6 @@ public class EnemyMovement : MonoBehaviour
                 }
             
             }
-   
 
         }
     }
@@ -135,7 +152,7 @@ public class EnemyMovement : MonoBehaviour
     {
         RaycastHit2D inSight = Physics2D.BoxCast(
             enemyBoxCollider.bounds.center + enemy.right * range * enemy.localScale.x * colliderDistance,
-            new Vector3(enemyBoxCollider.bounds.size.x * range, enemyBoxCollider.bounds.size.y* 3, enemyBoxCollider.bounds.size.z),
+            new Vector3(enemyBoxCollider.bounds.size.x * range, enemyBoxCollider.bounds.size.y* 8, enemyBoxCollider.bounds.size.z),
             0,
             Vector2.left,
             0,
@@ -149,7 +166,7 @@ public class EnemyMovement : MonoBehaviour
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireCube(
             enemyBoxCollider.bounds.center + enemy.right * range * enemy.localScale.x * colliderDistance,
-            new Vector3(enemyBoxCollider.bounds.size.x * range, enemyBoxCollider.bounds.size.y *3, enemyBoxCollider.bounds.size.z)
+            new Vector3(enemyBoxCollider.bounds.size.x * range, enemyBoxCollider.bounds.size.y *8, enemyBoxCollider.bounds.size.z)
             );
     }
 
@@ -170,33 +187,53 @@ public class EnemyMovement : MonoBehaviour
     }
     private void MoveInDirection(int _direction)
     {
-        idleTimer = 0;
-        animator.SetBool("moving", true);
-        rigidbody.velocity = new Vector2(_direction * speed, rigidbody.velocity.y);
-      
+        if(!died)
+        {
+
+            idleTimer = 0;
+            animator.SetBool("moving", true);
+            rigidbody.velocity = new Vector2(_direction * speed, rigidbody.velocity.y);
+
+            FlipDirection(_direction);
+        }
+    }
+
+    private void FlipDirection(int _direction)
+    {
         enemy.localScale = new Vector3(Mathf.Abs(initScale.x) * _direction,
             initScale.y,
             initScale.z);
+        if(hasWeapon)
+        {
+            enemyWeapon.localScale = new Vector3(Mathf.Abs(enemyWeapon.localScale.x) * _direction, Mathf.Abs(enemyWeapon.localScale.y) * _direction, enemyWeapon.localScale.z);
+        }
     }
 
-    private IEnumerator CheckGrounded()
+    private void JumpTowardsPlayer()
     {
-
-        bool lastGrounded = isGrounded;
-        bool currentGrounded = Physics2D.OverlapBox(Feet.position, feetBox.size, 0, layerMask);
-        if (!currentGrounded && lastGrounded)
+        float distanceFromPlayer = (playerObj.transform.position.x - enemy.position.x);
+        float xForce = distanceFromPlayer;
+        int direction = (distanceFromPlayer < 0) ? -1 : 1;
+        if(distanceFromPlayer < 6)
         {
-            yield return new WaitForSeconds(0.02f);
+            xForce /= 2;
         }
-        isGrounded = currentGrounded;
+        if(isGrounded)
+        {
+            animator.SetBool("jumping", true);
+            rigidbody.AddForce(new Vector2(xForce, jumpHeight), ForceMode2D.Impulse);
+            jumpTimer = 0;
+            FlipDirection(direction);
+        }
     }
 
     //Stops the movement, switches enemys boxcollider to a deathboxcollider
     public void SwitchColliders()
     {
-        animator.SetBool("moving", false);
         died = true;
-        enemyBoxCollider.size = new Vector2(7, 2);
+        animator.SetBool("moving", false);
+        enemyBoxCollider.size = new Vector2(6.5f, 1.4f);
         Destroy(feetBox);
     }
+
 }

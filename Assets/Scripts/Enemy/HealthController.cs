@@ -25,7 +25,13 @@ public class HealthController : MonoBehaviour
     public void takeDamage(int dmg)
     {
         Hp -= dmg;
-        hpBar.transform.localScale = new Vector3((float)((1.0 * Hp / HpModified) * initialscale.x),initialscale.y,initialscale.z) ;
+        if(Hp <= 0)
+        {
+           hpBar.transform.localScale = new Vector3((0 * initialscale.x), initialscale.y, initialscale.z);
+        } else
+        {
+           hpBar.transform.localScale = new Vector3((float)((1.0 * Hp / HpModified) * initialscale.x),initialscale.y,initialscale.z) ;
+        }
     }
 
     public void Update()
