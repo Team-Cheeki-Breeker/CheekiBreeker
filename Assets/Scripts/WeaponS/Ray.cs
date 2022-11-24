@@ -18,11 +18,6 @@ public class Ray : MonoBehaviour
     {
         transform.Rotate(0f, 0f, -90f);
         Invoke("DestroyProjectile", lifeTime);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
         RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.up, distance, solidMask);
         if (hitInfo.collider != null)
         {
@@ -31,6 +26,12 @@ public class Ray : MonoBehaviour
                 hitInfo.collider.GetComponent<HealthController>().takeDamage(damage);
             }
         }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
         transform.localScale += Vector3.up * speed * Time.deltaTime;
     }
 
