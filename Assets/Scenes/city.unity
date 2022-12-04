@@ -51124,6 +51124,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FUCK_OFF_HARDBASS
       objectReference: {fileID: 0}
+    - target: {fileID: 3584492737150584449, guid: 3c9645aa89883f24797583fc856482b1, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 3584492737150584450, guid: 3c9645aa89883f24797583fc856482b1, type: 3}
       propertyPath: m_audioClip
       value: 

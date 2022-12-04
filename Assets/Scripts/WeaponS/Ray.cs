@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class Ray : MonoBehaviour
@@ -18,12 +19,26 @@ public class Ray : MonoBehaviour
     {
         transform.Rotate(0f, 0f, -90f);
         Invoke("DestroyProjectile", lifeTime);
-        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.up, distance, solidMask);
-        if (hitInfo.collider != null)
+        //        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.up, distance, solidMask);
+        //        if (hitInfo.collider != null)
+        //        {
+        //            if (hitInfo.collider.CompareTag("Enemy"))
+        //            {
+        //                hitInfo.collider.GetComponent<HealthController>().takeDamage(damage);
+        //            }
+        //        }
+
+        RaycastHit2D[] hits;
+        hits = Physics2D.RaycastAll(transform.position, transform.up, distance, solidMask);
+
+        if(hits.Length > 0)
         {
-            if (hitInfo.collider.CompareTag("Enemy"))
+            foreach(RaycastHit2D hitInfo in hits)
             {
-                hitInfo.collider.GetComponent<HealthController>().takeDamage(damage);
+                if (hitInfo.collider.CompareTag("Enemy"))
+                    {
+                        hitInfo.collider.GetComponent<HealthController>().takeDamage(damage);
+                    }
             }
         }
     }
