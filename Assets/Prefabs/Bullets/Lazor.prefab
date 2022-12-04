@@ -53,7 +53,7 @@ MonoBehaviour:
     m_Bits: 128
   lifeTime: 2.2
   speed: 250
-  damage: 40
+  damage: 20
   collisionEffect: {fileID: 0}
 --- !u!212 &7283382776213768195
 SpriteRenderer:
