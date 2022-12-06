@@ -10,7 +10,7 @@ public class ZombieWeapon : MonoBehaviour
     public AudioClip reloadClip;
     private GameObject player;
    // private float spreadWindow;
-   
+    public Animator zombieAnimator;
 
    // public float spreadTimeDampen = 1000.0f;
    // public float spreadIncrease = 1.0f;
@@ -51,35 +51,39 @@ public class ZombieWeapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (spreadWindow <= 0) spreadWindow = 0; else spreadWindow -= spreadTimeDampen * Time.deltaTime;
-        Vector3 difference = player.transform.position - transform.position;
-        float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0f, 0f, rotZ + Offset);
+        if(!zombieAnimator.GetBool("died"))
+        {
+
+            //if (spreadWindow <= 0) spreadWindow = 0; else spreadWindow -= spreadTimeDampen * Time.deltaTime;
+            Vector3 difference = player.transform.position - transform.position;
+            float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0f, 0f, rotZ + Offset);
         
 
-        if (timeBtwShots <= 0 && reloadCD <= 0)
-        {
-            
-            if (difference.magnitude <= alertScope)
+            if (timeBtwShots <= 0 && reloadCD <= 0)
             {
-                if(magazineCurr <= 0)
+            
+                if (difference.magnitude <= alertScope)
                 {
-                    reloadCD = startReloadTime;
-                    magazineCurr = modifiedstartMag;
-                    //StartCoroutine(PlayReload(reloadCD * 1.0f - 0.4f));
-                    //spreadWindow = 0;
+                    if(magazineCurr <= 0)
+                    {
+                        reloadCD = startReloadTime;
+                        magazineCurr = modifiedstartMag;
+                        //StartCoroutine(PlayReload(reloadCD * 1.0f - 0.4f));
+                        //spreadWindow = 0;
+                    }
+                    FireAway(/*spreadWindow*/);
+                    //spreadWindow += spreadIncrease;  
+                    GetComponent<AudioSource>().PlayOneShot(fireCLip);
+                    magazineCurr -= 1;
+                    timeBtwShots = startTimeBtwShots;
                 }
-                FireAway(/*spreadWindow*/);
-                //spreadWindow += spreadIncrease;  
-                GetComponent<AudioSource>().PlayOneShot(fireCLip);
-                magazineCurr -= 1;
-                timeBtwShots = startTimeBtwShots;
             }
-        }
-        else
-        {
-            timeBtwShots -= Time.deltaTime;
-            reloadCD -= Time.deltaTime;
+            else
+            {
+                timeBtwShots -= Time.deltaTime;
+                reloadCD -= Time.deltaTime;
+            }
         }
         
     } 

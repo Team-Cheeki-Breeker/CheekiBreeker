@@ -49,7 +49,6 @@ public class EnemyMovement : MonoBehaviour
 
 
     private GameObject playerObj = null;
-    private bool died = false;
     private void Awake()
     {
 
@@ -60,7 +59,7 @@ public class EnemyMovement : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if(!died)
+        if(!animator.GetBool("died"))
         {
 
             if (PlayerInSight())
@@ -146,6 +145,9 @@ public class EnemyMovement : MonoBehaviour
             
             }
 
+        } else
+        {
+            StopMovement();
         }
     }
     private bool PlayerInSight()
@@ -187,7 +189,7 @@ public class EnemyMovement : MonoBehaviour
     }
     private void MoveInDirection(int _direction)
     {
-        if(!died)
+        if(!animator.GetBool("died"))
         {
 
             idleTimer = 0;
@@ -230,10 +232,14 @@ public class EnemyMovement : MonoBehaviour
     //Stops the movement, switches enemys boxcollider to a deathboxcollider
     public void SwitchColliders()
     {
-        died = true;
         animator.SetBool("moving", false);
         enemyBoxCollider.size = new Vector2(6.5f, 1.4f);
         Destroy(feetBox);
     }
 
+
+    public void StopMovement()
+    {
+       rigidbody.velocity = Vector3.zero;
+    }
 }

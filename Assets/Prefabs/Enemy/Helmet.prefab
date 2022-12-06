@@ -328,11 +328,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1526798489793215480, guid: afe951f8bab8a7e4ab7a15f4d71f8f2d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.05
+      value: -0.017
       objectReference: {fileID: 0}
     - target: {fileID: 1526798489793215480, guid: afe951f8bab8a7e4ab7a15f4d71f8f2d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.63
+      value: 0.637
       objectReference: {fileID: 0}
     - target: {fileID: 1526798489793215480, guid: afe951f8bab8a7e4ab7a15f4d71f8f2d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -386,6 +386,10 @@ PrefabInstance:
       propertyPath: alertScope
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 8072879034613789992, guid: afe951f8bab8a7e4ab7a15f4d71f8f2d, type: 3}
+      propertyPath: zombieAnimator
+      value: 
+      objectReference: {fileID: 331572568653769304}
     m_RemovedComponents:
     - {fileID: 1526798489793215478, guid: afe951f8bab8a7e4ab7a15f4d71f8f2d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: afe951f8bab8a7e4ab7a15f4d71f8f2d, type: 3}
