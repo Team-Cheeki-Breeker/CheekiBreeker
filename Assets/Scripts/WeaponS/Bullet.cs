@@ -24,12 +24,16 @@ public class Bullet : MonoBehaviour
         RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.up, distance, solidMask);
         if (hitInfo.collider != null)
         {
-            if (hitInfo.collider.CompareTag(whoToKill))
+            if(!hitInfo.collider.isTrigger)
             {
-                if(whoToKill == "Enemy") hitInfo.collider.GetComponent<HealthController>().takeDamage(damage);
-                if (whoToKill == "Player") hitInfo.collider.GetComponent<PlayerHandler>().TakeDamage(damage);
+                if (hitInfo.collider.CompareTag(whoToKill))
+                {
+                    if(whoToKill == "Enemy") hitInfo.collider.GetComponent<HealthController>().takeDamage(damage);
+                    if (whoToKill == "Player") hitInfo.collider.GetComponent<PlayerHandler>().TakeDamage(damage);
+                }
+                DestroyProjectile();
+
             }
-            DestroyProjectile();
         }
         transform.Translate(Vector2.up * speed * Time.deltaTime);
     }
