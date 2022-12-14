@@ -159,6 +159,10 @@ PrefabInstance:
       propertyPath: rightEdge
       value: 
       objectReference: {fileID: 4493813396200559719}
+    - target: {fileID: 5309621361255746219, guid: 009156cdf8f3f7743bb62813df8e9c88, type: 3}
+      propertyPath: m_SortingOrder
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 009156cdf8f3f7743bb62813df8e9c88, type: 3}
 --- !u!4 &3605679947538973478 stripped
