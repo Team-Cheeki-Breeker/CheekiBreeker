@@ -28,10 +28,17 @@ public class Bullet : MonoBehaviour
             {
                 if (hitInfo.collider.CompareTag(whoToKill))
                 {
-                    if(whoToKill == "Enemy") hitInfo.collider.GetComponent<HealthController>().takeDamage(damage);
-                    if (whoToKill == "Player") hitInfo.collider.GetComponent<PlayerHandler>().TakeDamage(damage);
+                    if (whoToKill == "Enemy" && hitInfo.collider.gameObject.tag == "Enemy") { 
+                        hitInfo.collider.GetComponent<HealthController>().takeDamage(damage);
+                        DestroyProjectile();
+
+                    }
+                    if (whoToKill == "Player" && hitInfo.collider.gameObject.tag == "Player") { 
+                         hitInfo.collider.GetComponent<PlayerHandler>().TakeDamage(damage);
+                        DestroyProjectile();
+
+                    }
                 }
-                DestroyProjectile();
 
             }
         }
